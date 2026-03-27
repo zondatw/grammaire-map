@@ -8,7 +8,7 @@
   --correct: #16a34a;
   --incorrect: #dc2626;
   --radius: 6px;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font: var(--font-geist), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 * {
