@@ -9,24 +9,42 @@ interface Props {
   todayRuleId: string | null
 }
 
-// Node style by mastery level
-function nodeStyle(level: 0 | 1 | 2 | undefined, isToday: boolean) {
+// Node style by mastery level — reads from CSS custom properties so colors stay in sync with the design system
+function nodeStyle(level: 0 | 1 | 2 | undefined, isToday: boolean, tokens: CSSTokens) {
   const base = {
-    'background-color': '#f5f5f5',
-    'border-color': '#ccc',
+    'background-color': tokens.nodeBg,
+    'border-color': tokens.nodeBorder,
     'border-width': 1,
-    color: '#999',
+    color: tokens.nodeColor,
   }
   if (level === 1) {
-    return { ...base, 'background-color': '#d1d5db', 'border-color': '#9ca3af', color: '#374151', 'border-width': 1 }
+    return { ...base, 'background-color': tokens.seenBg, 'border-color': tokens.seenBorder, color: tokens.seenColor }
   }
   if (level === 2) {
-    return { ...base, 'background-color': '#374151', 'border-color': '#111827', color: '#fff', 'border-width': 2 }
+    return { ...base, 'background-color': tokens.masteredBg, 'border-color': tokens.masteredBorder, color: tokens.masteredColor, 'border-width': 2 }
   }
   if (isToday) {
-    return { ...base, 'border-color': '#000', 'border-width': 3, color: '#111' }
+    return { ...base, 'border-color': tokens.fg, 'border-width': 3, color: tokens.fg }
   }
   return base
+}
+
+interface CSSTokens {
+  nodeBg: string; nodeBorder: string; nodeColor: string
+  seenBg: string; seenBorder: string; seenColor: string
+  masteredBg: string; masteredBorder: string; masteredColor: string
+  edgeColor: string; fg: string
+}
+
+function readTokens(): CSSTokens {
+  const s = getComputedStyle(document.documentElement)
+  const v = (name: string) => s.getPropertyValue(name).trim()
+  return {
+    nodeBg: v('--map-node-bg'), nodeBorder: v('--map-node-border'), nodeColor: v('--map-node-color'),
+    seenBg: v('--map-node-seen-bg'), seenBorder: v('--map-node-seen-border'), seenColor: v('--map-node-seen-color'),
+    masteredBg: v('--map-node-mastered-bg'), masteredBorder: v('--map-node-mastered-border'), masteredColor: v('--map-node-mastered-color'),
+    edgeColor: v('--map-edge-color'), fg: v('--fg'),
+  }
 }
 
 export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) {
@@ -41,6 +59,7 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
 
     import('cytoscape').then((mod) => {
       const cytoscape = mod.default
+      const tokens = readTokens()
 
       cy = cytoscape({
         container: containerRef.current,
@@ -65,18 +84,18 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
               width: '80px',
               height: '40px',
               shape: 'roundrectangle',
-              'background-color': '#f5f5f5',
-              'border-color': '#ccc',
+              'background-color': tokens.nodeBg,
+              'border-color': tokens.nodeBorder,
               'border-width': 1,
-              color: '#999',
+              color: tokens.nodeColor,
             },
           },
           {
             selector: 'edge',
             style: {
               width: 1,
-              'line-color': '#e5e7eb',
-              'target-arrow-color': '#e5e7eb',
+              'line-color': tokens.edgeColor,
+              'target-arrow-color': tokens.edgeColor,
               'target-arrow-shape': 'triangle',
               'curve-style': 'bezier',
             },
@@ -95,7 +114,7 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
       cyRef.current = cy
 
       // Apply initial mastery styles
-      applyStyles(cy, masteryState, todayRuleId)
+      applyStyles(cy, masteryState, todayRuleId, tokens)
     })
 
     return () => {
@@ -111,7 +130,7 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
   useEffect(() => {
     const cy = cyRef.current
     if (!cy) return
-    applyStyles(cy, masteryState, todayRuleId)
+    applyStyles(cy, masteryState, todayRuleId, readTokens())
   }, [masteryState, todayRuleId])
 
   return (
@@ -127,14 +146,15 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
 function applyStyles(
   cy: import('cytoscape').Core,
   masteryState: MasteryState,
-  todayRuleId: string | null
+  todayRuleId: string | null,
+  tokens: CSSTokens
 ) {
   cy.batch(() => {
     cy.nodes().forEach((node) => {
       const id = node.id()
       const level = (masteryState[id] ?? 0) as 0 | 1 | 2
       const isToday = id === todayRuleId
-      const style = nodeStyle(level, isToday)
+      const style = nodeStyle(level, isToday, tokens)
       node.style(style)
     })
   })
