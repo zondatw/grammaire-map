@@ -1,5 +1,3 @@
-export const runtime = 'nodejs'
-
 import { getCurriculum, getRule, getDrills, getGraphConfig } from '@/lib/content'
 import type { Rule, Drill, GraphConfig } from '@/lib/types'
 import DrillPage from '@/components/DrillPage'

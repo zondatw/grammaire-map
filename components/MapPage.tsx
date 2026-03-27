@@ -40,7 +40,7 @@ export default function MapPage({ graph, orderedIds }: Props) {
         <div className="map-page-stats">
           <span className="stat">{masteredCount} mastered</span>
           <ThemeToggle />
-          <a href="/drill" className="btn-drill">Today&apos;s Drill →</a>
+          <a href="./drill.html" className="btn-drill">Today&apos;s Drill →</a>
         </div>
       </header>
 

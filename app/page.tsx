@@ -1,5 +1,3 @@
-export const runtime = 'nodejs'
-
 import { getGraphConfig, getCurriculum } from '@/lib/content'
 import MapPage from '@/components/MapPage'
 
