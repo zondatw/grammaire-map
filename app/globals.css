@@ -44,10 +44,10 @@ a { color: inherit; text-decoration: none; }
   height: 100vh;
   overflow-y: auto;
   border-right: 1px solid var(--border);
-  padding: 32px 28px;
+  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .panel-right {
@@ -88,14 +88,22 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 
+.rule-body {
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
 .rule-body h3 {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   color: var(--fg-muted);
-  margin-bottom: 8px;
-  margin-top: 16px;
+  margin-bottom: 6px;
+  margin-top: 14px;
 }
 .rule-body h3:first-child { margin-top: 0; }
 
