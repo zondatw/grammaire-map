@@ -102,6 +102,21 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.3px;
 }
 
+.btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--fg-muted);
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-back:hover { border-color: var(--border-hover); color: var(--fg); }
+
 .badge-new {
   background: var(--accent);
   color: var(--accent-fg);
