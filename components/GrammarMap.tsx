@@ -117,6 +117,8 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
   return (
     <div
       ref={containerRef}
+      role="img"
+      aria-label="Grammar knowledge map"
       style={{ width: '100%', height: '100%', minHeight: '400px' }}
     />
   )
