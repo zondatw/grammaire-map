@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:gh-pages": "ASSET_PREFIX=https://cdn.jsdelivr.net/gh/zondatw/grammaire-map@gh-pages next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest",
