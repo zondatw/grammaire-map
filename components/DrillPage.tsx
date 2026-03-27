@@ -128,9 +128,8 @@ function renderMarkdown(md: string): string {
     // List items
     .replace(/^- (.+)$/gm, '<li>$1</li>')
 
-  // Wrap consecutive <li> in <ul>
-  html = html.replace(/(<li>[\s\S]*?<\/li>)\n?(?!<li>)/g, (_, last) => last)
-  html = html.replace(/(<li>.*<\/li>\n?)+/gs, (block) => `<ul>${block}</ul>`)
+  // Wrap consecutive <li> lines in <ul> — no dotAll flag so . stays line-scoped
+  html = html.replace(/((?:<li>[^\n]*<\/li>\n?)+)/g, (block) => `<ul>${block}</ul>`)
 
   // Table rows: | cell | cell |
   html = html.replace(/^\|(.+)\|$/gm, (line) => {
