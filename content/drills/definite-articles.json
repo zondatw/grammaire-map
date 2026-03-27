@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ chien est grand.",
+    "choices": ["le", "la", "les"],
+    "answer": "le",
+    "hint": "chien = masculine"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ maison est petite.",
+    "choices": ["le", "la", "les"],
+    "answer": "la",
+    "hint": "maison = feminine"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ enfants jouent dehors.",
+    "choices": ["le", "la", "les"],
+    "answer": "les",
+    "hint": "enfants = plural"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ ami de Pierre est sympa. (ami = masculine)",
+    "answer": "L'",
+    "hint": "Before a vowel, le/la contracts to l'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ livres sont sur la table.",
+    "choices": ["le", "la", "les"],
+    "answer": "les",
+    "hint": "livres = plural"
+  }
+]

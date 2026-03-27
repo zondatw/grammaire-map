@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Demain, je ___ toute la journée. (travailler — futur simple, je)",
+    "answer": "travaillerai",
+    "hint": "Infinitive + -ai: travailler + ai = travaillerai"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ils ___ à Paris l'année prochaine. (aller — futur simple, irrégulier)",
+    "answer": "iront",
+    "hint": "aller irregular future stem: ir- + -ont = iront"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the futur simple of 'être' for 'je'?",
+    "choices": ["suis", "serai", "seré", "étais"],
+    "answer": "serai",
+    "hint": "être irregular future stem: ser- → je serai"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Quand tu ___ le temps, appelle-moi. (avoir — futur simple, tu)",
+    "answer": "auras",
+    "hint": "avoir irregular stem: aur- + -as = auras"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "After 'quand', French uses which tense (where English uses present)?",
+    "choices": ["présent", "imparfait", "futur simple", "passé composé"],
+    "answer": "futur simple",
+    "hint": "Quand + futur simple (unlike English which uses present)"
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Which is the 'est-ce que' question form of 'Tu parles français'?",
+    "choices": ["Est-ce que tu parles français?", "Parles-tu français?", "Tu parles français?"],
+    "answer": "Est-ce que tu parles français?",
+    "hint": "Est-ce que + normal word order"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which is the inversion form of 'Vous avez une voiture'?",
+    "choices": ["Est-ce que vous avez une voiture?", "Avez-vous une voiture?", "Vous avez-une voiture?"],
+    "answer": "Avez-vous une voiture?",
+    "hint": "Inversion: verb-subject with a hyphen"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Parle-___-il français? (il inversion with vowel-ending verb)",
+    "choices": ["t", "s", "x", "(nothing)"],
+    "answer": "t",
+    "hint": "Add -t- between verb and il/elle when verb ends in a vowel"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which method is most natural in everyday spoken French?",
+    "choices": ["Inversion (Parlez-vous...?)", "Est-ce que (Est-ce que vous...?)", "Intonation (Vous parlez...?)"],
+    "answer": "Est-ce que (Est-ce que vous...?)",
+    "hint": "Intonation is casual; est-ce que is the everyday standard"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ que tu habites à Paris? (everyday question form)",
+    "answer": "Est-ce",
+    "hint": "est-ce que = the est-ce que question opener"
+  }
+]

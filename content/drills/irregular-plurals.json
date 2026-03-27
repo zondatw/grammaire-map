@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "un cheval → des ___ (-al → -aux)",
+    "answer": "chevaux",
+    "hint": "-al endings become -aux in the plural"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "un gâteau → des ___ (-eau → -eaux)",
+    "answer": "gâteaux",
+    "hint": "-eau endings add x to form the plural"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the plural of 'un jeu' (a game)?",
+    "choices": ["jeus", "jeux", "jeaux", "jeus"],
+    "answer": "jeux",
+    "hint": "-eu → -eux"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the plural of 'un bras' (an arm)?",
+    "choices": ["brass", "brases", "bras"],
+    "answer": "bras",
+    "hint": "Words ending in -s don't change in the plural"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "un animal → des ___",
+    "answer": "animaux",
+    "hint": "-al → -aux"
+  }
+]

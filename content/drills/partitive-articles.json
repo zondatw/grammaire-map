@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Je mange ___ pain. (some bread — pain = masculine)",
+    "choices": ["du", "de la", "de l'", "des"],
+    "answer": "du",
+    "hint": "pain = masculine → du"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Elle boit ___ eau. (some water — eau starts with vowel)",
+    "choices": ["du", "de la", "de l'", "des"],
+    "answer": "de l'",
+    "hint": "Before a vowel, use de l'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Il écoute ___ musique. (some music — musique = feminine)",
+    "choices": ["du", "de la", "de l'", "des"],
+    "answer": "de la",
+    "hint": "musique = feminine → de la"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Je ne veux pas ___ café. (negation changes partitive)",
+    "answer": "de",
+    "hint": "After negation, du/de la/de l' all become de"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous mangeons ___ soupe. (feminine noun, no vowel)",
+    "answer": "de la",
+    "hint": "soupe = feminine → de la"
+  }
+]

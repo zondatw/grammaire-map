@@ -1,0 +1,39 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Paris est ___ grand ___ Lyon. (Paris is bigger than Lyon)",
+    "answer": "plus / que",
+    "hint": "Comparative: plus + adjective + que"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "How do you say 'She is as tired as him'?",
+    "choices": [
+      "Elle est plus fatiguée que lui.",
+      "Elle est aussi fatiguée que lui.",
+      "Elle est moins fatiguée que lui."
+    ],
+    "answer": "Elle est aussi fatiguée que lui.",
+    "hint": "aussi + adjective + que = as ... as"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the comparative of 'bon' (good)?",
+    "choices": ["plus bon", "meilleur", "bien"],
+    "answer": "meilleur",
+    "hint": "bon is irregular: meilleur (better), le meilleur (the best)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "C'est ___ meilleur film de l'année. (superlative — masculine singular)",
+    "answer": "le",
+    "hint": "Superlative uses the definite article: le/la/les + meilleur"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the superlative of 'mauvais' (bad)?",
+    "choices": ["le plus mauvais", "le pire", "le moins bien"],
+    "answer": "le pire",
+    "hint": "mauvais → pire (worse), le pire (the worst)"
+  }
+]

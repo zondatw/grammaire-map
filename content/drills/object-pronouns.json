@@ -1,0 +1,39 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Replace 'ce livre' with a pronoun: 'J'aime ___ livre.' → 'Je ___ aime.'",
+    "choices": ["le", "la", "lui", "les"],
+    "answer": "le",
+    "hint": "livre = masculine singular direct object → le"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Where does the object pronoun go in French?",
+    "choices": [
+      "After the verb",
+      "Before the conjugated verb",
+      "At the end of the sentence"
+    ],
+    "answer": "Before the conjugated verb",
+    "hint": "Je le vois (I see him) — le comes before vois"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Il parle à Marie. → Il ___ parle. (indirect object pronoun)",
+    "answer": "lui",
+    "hint": "à + person (singular) → lui"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Tu aimes cette chanson? → Oui, je ___ aime. (feminine singular)",
+    "answer": "l'",
+    "hint": "la before a vowel → l' (j'aime starts with a vowel)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Replace 'à mes amis': Il parle ___ amis. → Il ___ parle.",
+    "choices": ["lui", "leur", "les", "y"],
+    "answer": "leur",
+    "hint": "à + plural persons → leur"
+  }
+]

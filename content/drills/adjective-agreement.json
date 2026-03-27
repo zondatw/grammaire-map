@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "une femme ___ (grand)",
+    "choices": ["grand", "grande", "grands", "grandes"],
+    "answer": "grande",
+    "hint": "femme is feminine singular → add -e"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "des hommes ___ (petit)",
+    "choices": ["petit", "petite", "petits", "petites"],
+    "answer": "petits",
+    "hint": "hommes is masculine plural → add -s"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "une voiture ___. (rouge — already ends in -e)",
+    "answer": "rouge",
+    "hint": "Adjectives already ending in -e don't change for feminine"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Where does the adjective go in 'a red car'?",
+    "choices": ["une rouge voiture", "une voiture rouge"],
+    "answer": "une voiture rouge",
+    "hint": "Most adjectives follow the noun in French"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the feminine form of 'beau'?",
+    "choices": ["beaux", "beaue", "belle", "beau"],
+    "answer": "belle",
+    "hint": "beau is irregular — its feminine form is belle"
+  }
+]

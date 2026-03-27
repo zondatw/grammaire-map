@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ livre est à moi. (this book — masculine singular)",
+    "choices": ["ce", "cet", "cette", "ces"],
+    "answer": "ce",
+    "hint": "livre = masculine singular, starts with consonant → ce"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ homme est mon père. (this man — starts with h)",
+    "choices": ["ce", "cet", "cette", "ces"],
+    "answer": "cet",
+    "hint": "Before vowel or silent h, use cet"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ maison est jolie. (this house — feminine)",
+    "choices": ["ce", "cet", "cette", "ces"],
+    "answer": "cette",
+    "hint": "maison = feminine → cette"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ voitures sont rouges. (these cars — plural)",
+    "choices": ["ce", "cet", "cette", "ces"],
+    "answer": "ces",
+    "hint": "plural → ces"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ avion est grand. (this plane — avion starts with vowel)",
+    "answer": "Cet",
+    "hint": "avion starts with a vowel → cet, not ce"
+  }
+]

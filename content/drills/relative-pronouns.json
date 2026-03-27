@@ -1,0 +1,37 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "L'homme ___ parle est mon père. (The man who is speaking...)",
+    "choices": ["qui", "que", "dont", "où"],
+    "answer": "qui",
+    "hint": "qui = subject of the relative clause"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Le film ___ j'ai vu est excellent. (The film that I saw...)",
+    "choices": ["qui", "que", "dont", "où"],
+    "answer": "que",
+    "hint": "que = direct object of the relative clause (j'ai vu = I saw)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Le livre ___ je parle est célèbre. (parler de → dont)",
+    "choices": ["qui", "que", "dont", "où"],
+    "answer": "dont",
+    "hint": "dont replaces de + noun: parler de qqch → dont"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "La ville ___ j'habite est belle. (The city where I live...)",
+    "choices": ["qui", "que", "dont", "où"],
+    "answer": "où",
+    "hint": "où = place (or time) reference"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Choose qui or que: La femme ___ je connais est médecin.",
+    "choices": ["qui", "que"],
+    "answer": "que",
+    "hint": "je connais follows → que is the object; I know HER"
+  }
+]

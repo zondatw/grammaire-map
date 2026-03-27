@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ homme attend devant la porte.",
+    "choices": ["un", "une", "des"],
+    "answer": "un",
+    "hint": "homme = masculine singular"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ femme parle avec Marie.",
+    "choices": ["un", "une", "des"],
+    "answer": "une",
+    "hint": "femme = feminine singular"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Il y a ___ livres sur la table.",
+    "choices": ["un", "une", "des"],
+    "answer": "des",
+    "hint": "livres = plural"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Je n'ai pas ___ voiture. (negation changes article)",
+    "answer": "de",
+    "hint": "After negation, un/une/des all become de"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Tu veux ___ café?",
+    "choices": ["un", "une", "des"],
+    "answer": "un",
+    "hint": "café = masculine singular"
+  }
+]

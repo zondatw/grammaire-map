@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Je ___ étudiant.",
+    "choices": ["suis", "ai", "est", "a"],
+    "answer": "suis",
+    "hint": "être conjugated for 'je'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Elle ___ un chat.",
+    "choices": ["est", "a", "sont", "ont"],
+    "answer": "a",
+    "hint": "avoir conjugated for 'elle'"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous ___ en France. (to be)",
+    "answer": "sommes",
+    "hint": "être conjugated for 'nous'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "How do you say 'I am hungry' in French?",
+    "choices": ["Je suis faim", "J'ai faim", "Je fais faim", "J'ai faim"],
+    "answer": "J'ai faim",
+    "hint": "French uses avoir (to have) for hunger, not être (to be)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ils ___ vingt ans. (they are twenty years old)",
+    "answer": "ont",
+    "hint": "avoir for age: 'avoir X ans'"
+  }
+]

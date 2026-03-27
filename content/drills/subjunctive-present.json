@@ -1,0 +1,39 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Which trigger requires the subjunctive?",
+    "choices": ["je pense que", "il faut que", "je sais que"],
+    "answer": "il faut que",
+    "hint": "il faut que = it is necessary that → subjunctive"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Il faut que tu ___ plus fort. (parler — subjunctif, tu)",
+    "answer": "parles",
+    "hint": "ils parlent → stem parl- + -es = parles"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Je suis content qu'elle ___ là. (être — subjunctif, elle — irregular)",
+    "choices": ["est", "soit", "sera", "étais"],
+    "answer": "soit",
+    "hint": "être subjunctive: sois, sois, soit, soyons, soyez, soient"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "When do you use subjunctive vs infinitive?",
+    "choices": [
+      "Always use subjunctive after vouloir",
+      "Use subjunctive when two clauses share the same subject",
+      "Use subjunctive when the two clauses have different subjects"
+    ],
+    "answer": "Use subjunctive when the two clauses have different subjects",
+    "hint": "Je veux partir (same subject → infinitive) vs Je veux qu'il parte (different → subjunctive)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Bien qu'il ___ fatigué, il continue. (être — subjunctif, il)",
+    "answer": "soit",
+    "hint": "bien que + subjunctive: être → soit"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Je ___ parle ___ anglais. (negate: I don't speak English)",
+    "answer": "ne / pas",
+    "hint": "ne ... pas wraps the conjugated verb"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "How do you negate 'Il aime le café'?",
+    "choices": ["Il ne aime pas le café", "Il n'aime pas le café", "Il aime ne pas le café"],
+    "answer": "Il n'aime pas le café",
+    "hint": "ne → n' before a vowel"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous ___ mangeons ___. (negate)",
+    "answer": "ne / pas",
+    "hint": "ne ... pas around the conjugated verb"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which is correct written French?",
+    "choices": ["Je parle pas", "Je ne parle pas"],
+    "answer": "Je ne parle pas",
+    "hint": "ne is required in writing even if dropped in speech"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Negate: 'Tu as faim.'",
+    "choices": ["Tu n'as pas faim.", "Tu as ne faim pas.", "Tu pas as faim."],
+    "answer": "Tu n'as pas faim.",
+    "hint": "avoir = as → ne wraps it: n'as pas"
+  }
+]

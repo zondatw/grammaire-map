@@ -1,0 +1,37 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Quand j'étais enfant, je ___ au foot. (jouer — imparfait, je)",
+    "answer": "jouais",
+    "hint": "jouer stem: jou- + -ais = jouais"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Il ___ quand je suis sorti. (pleuvoir — imparfait, background)",
+    "answer": "pleuvait",
+    "hint": "pleuvoir stem: pleuv- + -ait = pleuvait"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What is the être imparfait stem?",
+    "choices": ["êt-", "ét-", "est-", "soi-"],
+    "answer": "ét-",
+    "hint": "être is the only irregular imparfait — stem is ét-"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which sentence uses imparfait correctly for a habitual past action?",
+    "choices": [
+      "Chaque été, j'ai nagé dans la mer.",
+      "Chaque été, je nageais dans la mer."
+    ],
+    "answer": "Chaque été, je nageais dans la mer.",
+    "hint": "Habitual/repeated past → imparfait"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous ___ ensemble tous les soirs. (manger — imparfait, nous)",
+    "answer": "mangions",
+    "hint": "manger nous stem: mange- + -ions = mangions"
+  }
+]

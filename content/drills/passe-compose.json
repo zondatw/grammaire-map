@@ -1,0 +1,38 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "J'___ mangé. (passé composé of manger — uses avoir)",
+    "answer": "ai",
+    "hint": "avoir conjugated for 'je' in present = ai"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "What is the past participle of 'parler'? (parler → ___)",
+    "answer": "parlé",
+    "hint": "-er verbs: drop -er, add -é"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Elle ___ allée au marché. (aller uses être)",
+    "choices": ["a", "est", "ont", "sont"],
+    "answer": "est",
+    "hint": "aller is an être verb — uses est for elle"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "With être verbs, the past participle:",
+    "choices": [
+      "never changes",
+      "agrees with the subject in gender and number",
+      "agrees with the object"
+    ],
+    "answer": "agrees with the subject in gender and number",
+    "hint": "être verbs: Elle est arrivée (+e), Ils sont arrivés (+s)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous ___ fini le travail. (finir — uses avoir)",
+    "answer": "avons",
+    "hint": "avoir for nous = avons"
+  }
+]

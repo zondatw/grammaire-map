@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ livre est intéressant. (my book — livre = masculine)",
+    "choices": ["ma", "mon", "mes"],
+    "answer": "mon",
+    "hint": "livre is masculine singular → mon"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ maison est grande. (my house — maison = feminine)",
+    "choices": ["ma", "mon", "mes"],
+    "answer": "ma",
+    "hint": "maison is feminine singular → ma"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ amie est sympa. (my friend — amie = feminine, starts with vowel)",
+    "choices": ["ma", "mon", "mes"],
+    "answer": "mon",
+    "hint": "Before feminine vowel-starting words, use mon not ma"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ enfants jouent dehors. (their children — plural)",
+    "answer": "Leurs",
+    "hint": "leur for singular, leurs for plural"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "'Sa voiture' can mean:",
+    "choices": ["only his car", "only her car", "his car OR her car"],
+    "answer": "his car OR her car",
+    "hint": "son/sa/ses doesn't distinguish gender of the owner"
+  }
+]

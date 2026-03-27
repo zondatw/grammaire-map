@@ -1,0 +1,36 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "What gender is 'la nation'?",
+    "choices": ["masculine", "feminine"],
+    "answer": "feminine",
+    "hint": "-tion endings are almost always feminine"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What gender is 'le fromage'?",
+    "choices": ["masculine", "feminine"],
+    "answer": "masculine",
+    "hint": "-age endings are usually masculine"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ liberté est importante. (liberté = feminine)",
+    "answer": "La",
+    "hint": "feminine singular → la"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What gender is 'la voiture' (car)?",
+    "choices": ["masculine", "feminine"],
+    "answer": "feminine",
+    "hint": "-ure endings tend to be feminine"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "What gender is 'le problème'?",
+    "choices": ["masculine", "feminine"],
+    "answer": "masculine",
+    "hint": "Ends in -e but is masculine — an exception to watch out for"
+  }
+]

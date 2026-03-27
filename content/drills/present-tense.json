@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Je ___ français. (parler)",
+    "answer": "parle",
+    "hint": "Drop -er, add -e for je"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous ___ ensemble. (manger)",
+    "answer": "mangeons",
+    "hint": "Drop -er, add -ons for nous. Verbs ending in -ger keep the 'e' before -ons."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Vous ___ beaucoup. (travailler)",
+    "choices": ["travaillez", "travailles", "travaille", "travaillent"],
+    "answer": "travaillez",
+    "hint": "Drop -er, add -ez for vous"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "How do you pronounce 'ils parlent'?",
+    "choices": ["il-par-LENT (rhymes with 'lent')", "Same as 'il parle'", "il-par-LAY", "il-par-LON"],
+    "answer": "Same as 'il parle'",
+    "hint": "The -ent ending in ils/elles is always silent"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ils ___ de la musique. (écouter)",
+    "answer": "écoutent",
+    "hint": "Drop -er, add -ent for ils/elles"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Je ___ lève à sept heures. (se lever, je)",
+    "answer": "me",
+    "hint": "Reflexive pronoun for 'je' is 'me'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Elle ___ appelle Sophie. (s'appeler, elle)",
+    "choices": ["me", "te", "se", "s'"],
+    "answer": "s'",
+    "hint": "se → s' before a vowel (appelle starts with a)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nous ___ couchons à minuit. (se coucher, nous)",
+    "answer": "nous",
+    "hint": "Reflexive pronoun for 'nous' is 'nous'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ils ___ lavent les mains. (se laver, ils)",
+    "choices": ["me", "te", "se", "s'"],
+    "answer": "se",
+    "hint": "Reflexive pronoun for ils/elles is 'se'"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which is a reflexive verb in French?",
+    "choices": ["parler", "manger", "se lever", "avoir"],
+    "answer": "se lever",
+    "hint": "Reflexive verbs are listed with 'se' in the infinitive"
+  }
+]
