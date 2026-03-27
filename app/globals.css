@@ -69,7 +69,7 @@ a { color: inherit; text-decoration: none; }
   height: 100vh;
   overflow: hidden;
   border-right: 1px solid var(--border);
-  padding: 24px 28px;
+  padding: 24px 28px 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -172,10 +172,17 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Drills ──────────────────────────────────── */
 
-.drills-section { display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; }
+.drills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
 .drills-heading { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--fg-muted); }
 
-.drill-card { display: flex; flex-direction: column; gap: 12px; }
+.drill-card { display: flex; flex-direction: column; gap: 16px; }
 
 .drill-progress {
   height: 4px;
@@ -197,7 +204,8 @@ a { color: inherit; text-decoration: none; }
 .drill-prompt {
   font-size: 16px;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .drill-choices {
