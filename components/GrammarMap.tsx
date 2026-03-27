@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
 import type { GraphConfig, MasteryState } from '@/lib/types'
 
 interface Props {
@@ -50,22 +50,12 @@ function readTokens(): CSSTokens {
 export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const cyRef = useRef<import('cytoscape').Core | null>(null)
-  // Increment to trigger style re-apply when color scheme changes
-  const [schemeVersion, setSchemeVersion] = useState(0)
 
-  useEffect(() => {
-    // Watch for data-theme attribute changes (explicit toggles)
-    const observer = new MutationObserver(() => setSchemeVersion((n) => n + 1))
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
-    // Also watch OS-level preference changes (for system mode)
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    const mqHandler = () => setSchemeVersion((n) => n + 1)
-    mq.addEventListener('change', mqHandler)
-    return () => {
-      observer.disconnect()
-      mq.removeEventListener('change', mqHandler)
-    }
-  }, [])
+  // Refs so observer/mq callbacks always see latest mastery without being recreated
+  const masteryRef = useRef(masteryState)
+  const todayRef = useRef(todayRuleId)
+  useEffect(() => { masteryRef.current = masteryState }, [masteryState])
+  useEffect(() => { todayRef.current = todayRuleId }, [todayRuleId])
 
   // Init Cytoscape once
   useEffect(() => {
@@ -130,7 +120,24 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
       cyRef.current = cy
 
       // Apply initial mastery styles
-      applyStyles(cy, masteryState, todayRuleId, tokens)
+      applyStyles(cy, masteryRef.current, todayRef.current, tokens)
+
+      // Watch for theme changes and recolor immediately (same frame as CSS flip)
+      const recolor = () => {
+        if (cyRef.current) applyStyles(cyRef.current, masteryRef.current, todayRef.current, readTokens())
+      }
+      const observer = new MutationObserver(recolor)
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+      const mq = window.matchMedia('(prefers-color-scheme: dark)')
+      mq.addEventListener('change', recolor)
+
+      // Store cleanup on the cy instance via a custom prop pattern — use closure instead
+      const origDestroy = cy.destroy.bind(cy)
+      cy.destroy = () => {
+        observer.disconnect()
+        mq.removeEventListener('change', recolor)
+        origDestroy()
+      }
     })
 
     return () => {
@@ -142,12 +149,12 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Reactively update styles when mastery or color scheme changes
+  // Reactively update node styles when mastery or today's rule changes
   useEffect(() => {
     const cy = cyRef.current
     if (!cy) return
     applyStyles(cy, masteryState, todayRuleId, readTokens())
-  }, [masteryState, todayRuleId, schemeVersion])
+  }, [masteryState, todayRuleId])
 
   return (
     <div
