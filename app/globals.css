@@ -67,7 +67,7 @@ a { color: inherit; text-decoration: none; }
   min-width: 320px;
   max-width: 520px;
   height: 100vh;
-  overflow-y: auto;
+  overflow: hidden;
   border-right: 1px solid var(--border);
   padding: 24px 28px;
   display: flex;
@@ -114,7 +114,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .rule-body {
-  max-height: 260px;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -171,7 +172,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Drills ──────────────────────────────────── */
 
-.drills-section { display: flex; flex-direction: column; gap: 16px; }
+.drills-section { display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; }
 .drills-heading { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--fg-muted); }
 
 .drill-card { display: flex; flex-direction: column; gap: 12px; }
@@ -304,6 +305,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--correct-bg);
   border: 1px solid var(--correct);
   border-radius: var(--radius);
+  flex-shrink: 0;
 }
 .btn-view-map {
   display: inline-block;
@@ -500,6 +502,7 @@ a { color: inherit; text-decoration: none; }
     width: 100%;
     max-width: 100%;
     height: auto;
+    overflow: visible;
     border-right: none;
     border-bottom: 1px solid var(--border);
     padding: 20px 16px;
@@ -507,8 +510,10 @@ a { color: inherit; text-decoration: none; }
   .panel-right {
     display: none; /* map hidden on mobile drill — not useful without context */
   }
+  /* On mobile the panel scrolls naturally; cap rule-body so drills stay visible */
   .rule-body {
-    max-height: 220px;
+    flex: none;
+    max-height: 40vh;
   }
 
   /* Map page: full-width, shorter header */
