@@ -19,6 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geist.variable}>
+      <head>
+        {/* Set data-theme before first paint to avoid flash */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('grammaireMap_theme')||'system';document.documentElement.setAttribute('data-theme',t);}catch(e){}` }} />
+      </head>
       <body><main>{children}</main></body>
     </html>
   );

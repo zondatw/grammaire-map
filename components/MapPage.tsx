@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import type { GraphConfig, MasteryState } from '@/lib/types'
 import { getMasteryState, getStartDate } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
+import ThemeToggle from './ThemeToggle'
 
 const GrammarMap = dynamic(() => import('./GrammarMap'), { ssr: false })
 
@@ -38,6 +39,7 @@ export default function MapPage({ graph, orderedIds }: Props) {
         </div>
         <div className="map-page-stats">
           <span className="stat">{masteredCount} mastered</span>
+          <ThemeToggle />
           <a href="/drill" className="btn-drill">Today&apos;s Drill →</a>
         </div>
       </header>

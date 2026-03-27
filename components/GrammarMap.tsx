@@ -54,10 +54,17 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
   const [schemeVersion, setSchemeVersion] = useState(0)
 
   useEffect(() => {
+    // Watch for data-theme attribute changes (explicit toggles)
+    const observer = new MutationObserver(() => setSchemeVersion((n) => n + 1))
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    // Also watch OS-level preference changes (for system mode)
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    const handler = () => setSchemeVersion((n) => n + 1)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
+    const mqHandler = () => setSchemeVersion((n) => n + 1)
+    mq.addEventListener('change', mqHandler)
+    return () => {
+      observer.disconnect()
+      mq.removeEventListener('change', mqHandler)
+    }
   }, [])
 
   // Init Cytoscape once

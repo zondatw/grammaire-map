@@ -6,6 +6,7 @@ import type { Rule, Drill, GraphConfig, MasteryState } from '@/lib/types'
 import { getMasteryState, saveMasteryState, advanceMastery, getStartDate } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
 import DrillCard from './DrillCard'
+import ThemeToggle from './ThemeToggle'
 
 const GrammarMap = dynamic(() => import('./GrammarMap'), { ssr: false })
 
@@ -79,7 +80,8 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
           {todayRuleId === todayRule.id && (
             <span className="badge-new">TODAY</span>
           )}
-          <h1 className="rule-title">{todayRule.title}</h1>
+          <h1 className="rule-title" style={{ flex: 1 }}>{todayRule.title}</h1>
+          <ThemeToggle />
         </header>
 
         <article
