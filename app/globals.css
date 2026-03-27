@@ -365,4 +365,46 @@ a { color: inherit; text-decoration: none; }
 .map-page-canvas {
   flex: 1;
   overflow: hidden;
+  min-height: 300px;
+}
+
+/* ─── Responsive ──────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Drill page: hide map panel, full-width rule+drill */
+  .app-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+  }
+  .panel-left {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 16px;
+  }
+  .panel-right {
+    display: none; /* map hidden on mobile drill — not useful without context */
+  }
+  .rule-body {
+    max-height: 220px;
+  }
+
+  /* Map page: full-width, shorter header */
+  .map-page-header {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .map-page-legend {
+    padding: 8px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .map-page-canvas {
+    min-height: 400px;
+  }
 }
