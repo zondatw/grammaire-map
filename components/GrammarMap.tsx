@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import type { GraphConfig, MasteryState } from '@/lib/types'
 
 interface Props {
@@ -50,6 +50,15 @@ function readTokens(): CSSTokens {
 export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const cyRef = useRef<import('cytoscape').Core | null>(null)
+  // Increment to trigger style re-apply when color scheme changes
+  const [schemeVersion, setSchemeVersion] = useState(0)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    const handler = () => setSchemeVersion((n) => n + 1)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   // Init Cytoscape once
   useEffect(() => {
@@ -126,12 +135,12 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Reactively update styles when mastery changes
+  // Reactively update styles when mastery or color scheme changes
   useEffect(() => {
     const cy = cyRef.current
     if (!cy) return
     applyStyles(cy, masteryState, todayRuleId, readTokens())
-  }, [masteryState, todayRuleId])
+  }, [masteryState, todayRuleId, schemeVersion])
 
   return (
     <div
@@ -156,6 +165,10 @@ function applyStyles(
       const isToday = id === todayRuleId
       const style = nodeStyle(level, isToday, tokens)
       node.style(style)
+    })
+    cy.edges().style({
+      'line-color': tokens.edgeColor,
+      'target-arrow-color': tokens.edgeColor,
     })
   })
 }
