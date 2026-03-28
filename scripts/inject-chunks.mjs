@@ -37,7 +37,13 @@ for (const file of htmlFiles) {
   }
 
   const tags = missing.map(src => `<script src="${src}"></script>`).join('\n')
-  html = html.replace(/(<script\b)/, `${tags}\n$1`)
+  // Inject BEFORE the app bootstrap script (id="_R_") so page modules are
+  // registered in TURBOPACK before React hydration begins
+  if (html.includes('id="_R_"')) {
+    html = html.replace(/(<script[^>]*id="_R_")/, `${tags}\n$1`)
+  } else {
+    html = html.replace(/(<\/body>)/, `${tags}\n$1`)
+  }
   writeFileSync(path, html)
   console.log(`${file}: injected ${missing.length} chunk(s): ${missing.map(c => c.split('/').pop()).join(', ')}`)
 }
