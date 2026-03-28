@@ -17,30 +17,72 @@ import { join } from 'path'
 const outDir = 'out'
 const chunksDir = join(outDir, '_next/static/chunks')
 
+// Compute the path prefix that getAssetPrefix() should return.
+// It's the URL pathname up to (but not including) /_next/.
+// We derive it from the first absolute asset URL in the built HTML
+// (e.g. https://raw.githubusercontent.com/zondatw/grammaire-map/gh-pages/_next/...)
+// → assetPathPrefix = "/zondatw/grammaire-map/gh-pages"
+//
+// Falls back to ASSET_PREFIX env var, then '' (for local/relative builds).
+function computeAssetPathPrefix() {
+  // Try to extract from the first HTML file that has an absolute /_next/ URL
+  for (const file of ['index.html', 'drill.html']) {
+    const filePath = join(outDir, file)
+    try {
+      const html = readFileSync(filePath, 'utf8')
+      const m = html.match(/href="(https?:\/\/[^"]*\/_next\/)/);
+      if (m) {
+        const url = new URL(m[1])
+        const pathBeforeNext = url.pathname.slice(0, url.pathname.indexOf('/_next/'))
+        return pathBeforeNext // e.g. "/zondatw/grammaire-map/gh-pages"
+      }
+    } catch { /* ignore */ }
+  }
+  // Fallback: ASSET_PREFIX env var
+  const assetPrefix = process.env.ASSET_PREFIX
+  if (assetPrefix) {
+    try {
+      return new URL(assetPrefix).pathname.replace(/\/$/, '')
+    } catch { /* ignore */ }
+  }
+  return ''
+}
+const assetPathPrefix = computeAssetPathPrefix()
+console.log(`Asset path prefix: "${assetPathPrefix}"`)
+
 // All JS chunk filenames available in the build
 const allChunkFiles = readdirSync(chunksDir).filter(f => f.endsWith('.js'))
 
 const htmlFiles = ['index.html', 'drill.html']
 
 /**
- * Patch chunk content: replace TURBOPACK's document.currentScript reference
- * with the chunk's actual URL string so registerChunk gets a valid path.
+ * Patch chunk content:
+ * 1. Replace TURBOPACK's document.currentScript reference with the chunk's
+ *    actual relative path so registerChunk gets a valid path key.
+ * 2. Replace getAssetPrefix() body with a hardcoded return of the path prefix,
+ *    because the function reads document.currentScript.src which is null/empty
+ *    for inline scripts and throws when called asynchronously from appBootstrap.
  */
 function patchChunk(content, filename) {
-  // TURBOPACK.push([SCRIPT_REF, modules...])
-  // - External scripts: SCRIPT_REF = document.currentScript (.src = full URL)
-  // - Inlined scripts:  SCRIPT_REF = document.currentScript (.src = null → TypeError)
-  //
+  // Fix 1: TURBOPACK.push([SCRIPT_REF, modules...])
   // registerChunk(e) resolves D(typeof e==="string" ? N(e) : e.src) as the chunk key.
   // loadChunkCached uses D(N("static/chunks/xxx.js")) = D(fullUrl) as the same key.
-  //
-  // So we pass the relative path "static/chunks/xxx.js" so that N() maps it to the
-  // correct full URL in both registerChunk and loadChunkCached.
-  const relativePath = `static/chunks/${filename}`
-  return content.replace(
+  // Pass the relative path so N() maps it to the correct full URL.
+  let patched = content.replace(
     '"object"==typeof document?document.currentScript:void 0',
-    JSON.stringify(relativePath)
+    JSON.stringify(`static/chunks/${filename}`)
   )
+
+  // Fix 2: getAssetPrefix() reads document.currentScript.src to extract the path
+  // prefix before /_next/. When appBootstrap() calls this asynchronously (after
+  // TURBOPACK's promise chain resolves), document.currentScript is null → E783 throws.
+  // Replace the function body with a hardcoded return of the path prefix.
+  const getAssetPrefixPattern = /function l\(\)\{let e=document\.currentScript;if\(!\(e instanceof HTMLScriptElement\)\)throw Object\.defineProperty\(new r\.InvariantError\(`Expected document\.currentScript to be a <script> element\. Received \$\{e\} instead\.`\),"__NEXT_ERROR_CODE",\{value:"E783",enumerable:!1,configurable:!0\}\);let\{pathname:t\}=new URL\(e\.src\),n=t\.indexOf\("\/_next\/"\);if\(-1===n\)throw Object\.defineProperty\(new r\.InvariantError\(`Expected document\.currentScript src to contain '\/_next\/'\. Received \$\{e\.src\} instead\.`\),"__NEXT_ERROR_CODE",\{value:"E784",enumerable:!1,configurable:!0\}\);return t\.slice\(0,n\)\}/
+  if (getAssetPrefixPattern.test(patched)) {
+    patched = patched.replace(getAssetPrefixPattern, `function l(){return ${JSON.stringify(assetPathPrefix)}}`)
+  }
+
+  return patched
 }
 
 for (const file of htmlFiles) {
