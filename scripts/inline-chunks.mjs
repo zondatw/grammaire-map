@@ -73,6 +73,14 @@ function patchChunk(content, filename) {
     JSON.stringify(`static/chunks/${filename}`)
   )
 
+  // Fix 3: Escape </script> inside JS string/regex literals.
+  // When a chunk contains the literal text "</script>" (e.g. in a string like
+  // `a.innerHTML = "<script></script>"`), the HTML parser terminates the <script>
+  // tag at that point, truncating the chunk mid-execution.
+  // Replace </script> with <\/script> — the HTML parser does not treat <\/ as a
+  // closing tag, but JS evaluates "\/" as "/" so the string values are unchanged.
+  patched = patched.replace(/<\/script>/gi, '<\\/script>')
+
   // Fix 2: getAssetPrefix() reads document.currentScript.src to extract the path
   // prefix before /_next/. When appBootstrap() calls this asynchronously (after
   // TURBOPACK's promise chain resolves), document.currentScript is null → E783 throws.
