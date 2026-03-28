@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:gh-pages": "ASSET_PREFIX=https://raw.githubusercontent.com/zondatw/grammaire-map/gh-pages next build && ASSET_PREFIX=https://raw.githubusercontent.com/zondatw/grammaire-map/gh-pages node scripts/inject-chunks.mjs",
+    "build:gh-pages": "ASSET_PREFIX=https://raw.githubusercontent.com/zondatw/grammaire-map/gh-pages next build && node scripts/inline-chunks.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest",
