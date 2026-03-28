@@ -3,18 +3,38 @@
  * This creates self-contained HTML files that work with htmlpreview.github.io:
  * - No dynamic chunk loading at runtime
  * - No MIME type issues from raw.githubusercontent.com
- * - No document.currentScript URL construction needed
+ *
+ * TURBOPACK fix: each chunk calls
+ *   TURBOPACK.push([document.currentScript, ...])
+ * so it can compute its own URL via document.currentScript.src.
+ * When inlined (no src attribute), currentScript.src is null → TypeError in registerChunk.
+ * Fix: replace the document.currentScript expression with the chunk's actual URL string
+ * so TURBOPACK uses the string path directly (bypasses the src lookup).
  */
 import { readFileSync, writeFileSync, readdirSync } from 'fs'
 import { join } from 'path'
 
 const outDir = 'out'
 const chunksDir = join(outDir, '_next/static/chunks')
+const assetPrefix = process.env.ASSET_PREFIX ?? '.'
 
 // All JS chunk filenames available in the build
 const allChunkFiles = readdirSync(chunksDir).filter(f => f.endsWith('.js'))
 
 const htmlFiles = ['index.html', 'drill.html']
+
+/**
+ * Patch chunk content: replace TURBOPACK's document.currentScript reference
+ * with the chunk's actual URL string so registerChunk gets a valid path.
+ */
+function patchChunk(content, filename) {
+  const chunkUrl = `${assetPrefix}/_next/static/chunks/${filename}`
+  // The pattern pushed as first element of each TURBOPACK.push([...]) call
+  return content.replace(
+    '"object"==typeof document?document.currentScript:void 0',
+    JSON.stringify(chunkUrl)
+  )
+}
 
 for (const file of htmlFiles) {
   const path = join(outDir, file)
@@ -30,7 +50,8 @@ for (const file of htmlFiles) {
     const filename = src.split('/').pop()
     const filePath = join(chunksDir, filename)
     try {
-      const content = readFileSync(filePath, 'utf8')
+      const raw = readFileSync(filePath, 'utf8')
+      const content = patchChunk(raw, filename)
       console.log(`  inlined: ${filename} (${Math.round(content.length / 1024)}KB)`)
       const id = (before + after).match(/id="([^"]+)"/)?.[1]
       return `<script${id ? ` id="${id}"` : ''}>${content}</script>`
@@ -46,7 +67,8 @@ for (const file of htmlFiles) {
     const missingTags = missing.map(filename => {
       const filePath = join(chunksDir, filename)
       try {
-        const content = readFileSync(filePath, 'utf8')
+        const raw = readFileSync(filePath, 'utf8')
+        const content = patchChunk(raw, filename)
         console.log(`  injected+inlined: ${filename} (${Math.round(content.length / 1024)}KB)`)
         return `<script>${content}</script>`
       } catch (e) {
