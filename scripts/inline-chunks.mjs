@@ -16,7 +16,6 @@ import { join } from 'path'
 
 const outDir = 'out'
 const chunksDir = join(outDir, '_next/static/chunks')
-const assetPrefix = process.env.ASSET_PREFIX ?? '.'
 
 // All JS chunk filenames available in the build
 const allChunkFiles = readdirSync(chunksDir).filter(f => f.endsWith('.js'))
@@ -28,11 +27,19 @@ const htmlFiles = ['index.html', 'drill.html']
  * with the chunk's actual URL string so registerChunk gets a valid path.
  */
 function patchChunk(content, filename) {
-  const chunkUrl = `${assetPrefix}/_next/static/chunks/${filename}`
-  // The pattern pushed as first element of each TURBOPACK.push([...]) call
+  // TURBOPACK.push([SCRIPT_REF, modules...])
+  // - External scripts: SCRIPT_REF = document.currentScript (.src = full URL)
+  // - Inlined scripts:  SCRIPT_REF = document.currentScript (.src = null → TypeError)
+  //
+  // registerChunk(e) resolves D(typeof e==="string" ? N(e) : e.src) as the chunk key.
+  // loadChunkCached uses D(N("static/chunks/xxx.js")) = D(fullUrl) as the same key.
+  //
+  // So we pass the relative path "static/chunks/xxx.js" so that N() maps it to the
+  // correct full URL in both registerChunk and loadChunkCached.
+  const relativePath = `static/chunks/${filename}`
   return content.replace(
     '"object"==typeof document?document.currentScript:void 0',
-    JSON.stringify(chunkUrl)
+    JSON.stringify(relativePath)
   )
 }
 
