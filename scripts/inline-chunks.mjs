@@ -73,12 +73,10 @@ function patchChunk(content, filename) {
     JSON.stringify(`static/chunks/${filename}`)
   )
 
-  // Fix 3: Escape </script> inside JS string/regex literals.
-  // When a chunk contains the literal text "</script>" (e.g. in a string like
-  // `a.innerHTML = "<script></script>"`), the HTML parser terminates the <script>
-  // tag at that point, truncating the chunk mid-execution.
-  // Replace </script> with <\/script> — the HTML parser does not treat <\/ as a
-  // closing tag, but JS evaluates "\/" as "/" so the string values are unchanged.
+  // Fix 3a: Escape </script> inside JS string/regex literals.
+  // The HTML parser terminates a <script> element at </script>, truncating the chunk.
+  // Replace with <\/script> — the HTML parser does not treat <\/ as a closing tag,
+  // but JS evaluates "\/" as "/" so string values are unchanged.
   patched = patched.replace(/<\/script>/gi, '<\\/script>')
 
   // Fix 2: getAssetPrefix() reads document.currentScript.src to extract the path
@@ -89,6 +87,17 @@ function patchChunk(content, filename) {
   if (getAssetPrefixPattern.test(patched)) {
     patched = patched.replace(getAssetPrefixPattern, `function l(){return ${JSON.stringify(assetPathPrefix)}}`)
   }
+
+  // Fix 3b: Escape <script opening-tag sequences that htmlpreview.github.io mangles.
+  // htmlpreview.js runs a global regex /<script.../gi on the entire HTML string
+  // (including inline script content) and replaces every <script with
+  // '<script type="text/htmlpreview"'. This turns JS string literals containing
+  // "<script>" into broken JS like `"<script type="text/htmlpreview">..."` — which
+  // causes a syntax error when the chunk executes. Replace <script (case-insensitive)
+  // with \u003cscript: JS evaluates \u003c as "<" so string values are unchanged,
+  // but the literal text no longer matches htmlpreview's pattern.
+  // This runs AFTER the getAssetPrefix fix because that regex also contains <script>.
+  patched = patched.replace(/<script/gi, '\\u003cscript')
 
   return patched
 }
