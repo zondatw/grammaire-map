@@ -84,7 +84,9 @@ for (const file of htmlFiles) {
       }
     }).filter(Boolean).join('\n')
 
-    html = html.replace(/(<script[^>]*id="_R_")/, `${missingTags}\n$1`)
+    // Use a function replacement to prevent $1/$2/etc. in chunk content from
+    // being interpreted as backreferences by String.prototype.replace.
+    html = html.replace(/(<script[^>]*id="_R_")/, (_, openTag) => `${missingTags}\n${openTag}`)
   }
 
   writeFileSync(path, html)
