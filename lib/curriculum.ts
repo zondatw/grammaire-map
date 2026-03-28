@@ -1,17 +1,18 @@
 /**
- * Compute how many full calendar days have elapsed since startDate.
- * Uses local calendar date. Returns 0 for invalid/future dates.
+ * Compute how many full calendar days have elapsed since startDate (UTC).
+ * startDate must be a YYYY-MM-DD string (as stored by getStartDate).
+ * Compares against today's UTC date so the result is consistent regardless of timezone.
+ * Returns 0 for invalid/future dates.
  */
 export function daysSince(startDate: string | null): number {
   if (!startDate) return 0
-  const start = new Date(startDate)
-  if (isNaN(start.getTime())) return 0
-  // Zero out time to compare calendar dates
-  const startMidnight = new Date(start)
-  startMidnight.setHours(0, 0, 0, 0)
-  const nowMidnight = new Date()
-  nowMidnight.setHours(0, 0, 0, 0)
-  const diff = Math.floor((nowMidnight.getTime() - startMidnight.getTime()) / 86_400_000)
+  // Parse start as UTC midnight (the 'Z' suffix forces UTC interpretation)
+  const startMs = Date.parse(startDate + 'T00:00:00Z')
+  if (isNaN(startMs)) return 0
+  // Today's UTC date as milliseconds since epoch (midnight UTC)
+  const todayStr = new Date().toISOString().split('T')[0]
+  const nowMs = Date.parse(todayStr + 'T00:00:00Z')
+  const diff = Math.floor((nowMs - startMs) / 86_400_000)
   return diff < 0 ? 0 : diff
 }
 
