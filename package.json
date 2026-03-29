@@ -5,7 +5,10 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "build:local": "next build && node scripts/inline-chunks.mjs",
         "build:gh-pages": "BASE_PATH=/grammaire-map next build && node scripts/inline-chunks.mjs",
+        "build:html-preview": "next build && INLINE_CSS=true node scripts/inline-chunks.mjs",
+        "preview": "npx serve out -p 8081",
         "start": "next start",
         "lint": "eslint",
         "test": "vitest",

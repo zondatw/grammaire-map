@@ -17,6 +17,12 @@ import { join } from 'path'
 const outDir = 'out'
 const chunksDir = join(outDir, '_next/static/chunks')
 
+// When INLINE_CSS=true, replace <link rel="stylesheet"> with <style> blocks.
+// This makes the HTML fully self-contained (no external CSS requests),
+// which is required for html-preview where CDN caching can serve stale CSS.
+const inlineCSS = process.env.INLINE_CSS === 'true'
+if (inlineCSS) console.log('CSS inlining enabled')
+
 // Compute the path prefix that getAssetPrefix() should return.
 // It's the URL pathname up to (but not including) /_next/.
 // We derive it from the first absolute asset URL in the built HTML
@@ -111,6 +117,26 @@ function patchChunk(content, filename) {
 for (const file of htmlFiles) {
   const path = join(outDir, file)
   let html = readFileSync(path, 'utf8')
+
+  // Inline CSS: replace <link rel="stylesheet" href="./_next/static/chunks/xxx.css">
+  // with <style>...</style> to avoid any external CSS request.
+  if (inlineCSS) {
+    html = html.replace(/<link([^>]*)\shref="([^"]*\/_next\/static\/chunks\/[^"]+\.css)"([^>]*)>/g, (match, before, src, after) => {
+      if (!/rel=["']stylesheet["']/.test(before + after)) return match
+      const filename = src.split('/').pop()
+      const filePath = join(chunksDir, filename)
+      try {
+        const raw = readFileSync(filePath, 'utf8')
+        // Escape </style> so the HTML parser doesn't close our style block early
+        const escaped = raw.replace(/<\/style>/gi, '<\\/style>')
+        console.log(`  inlined CSS: ${filename} (${Math.round(raw.length / 1024)}KB)`)
+        return `<style>${escaped}</style>`
+      } catch (e) {
+        console.warn(`  warning: could not inline CSS ${filename}: ${e.message}`)
+        return match
+      }
+    })
+  }
 
   // Track which chunks are already referenced in the HTML
   const referenced = new Set(
