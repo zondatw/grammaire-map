@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import type { GraphConfig, MasteryState } from '@/lib/types'
 import { getMasteryState, getStartDate } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
@@ -40,7 +41,7 @@ export default function MapPage({ graph, orderedIds }: Props) {
         <div className="map-page-stats">
           <span className="stat">{masteredCount} mastered</span>
           <ThemeToggle />
-          <a href="./drill.html" className="btn-drill">Today&apos;s Drill →</a>
+          <Link href="/drill" className="btn-drill">Today&apos;s Drill →</Link>
         </div>
       </header>
 

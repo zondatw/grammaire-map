@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import type { Rule, Drill, GraphConfig, MasteryState } from '@/lib/types'
 import { getMasteryState, saveMasteryState, advanceMastery, getStartDate } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
@@ -77,7 +78,7 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
       {/* Left panel: rule card + drills */}
       <div className="panel-left">
         <header className="rule-header">
-          <a href="./index.html" className="btn-back" aria-label="Back to map">←</a>
+          <Link href="/" className="btn-back" aria-label="Back to map">←</Link>
           {todayRuleId === todayRule.id && (
             <span className="badge-new">TODAY</span>
           )}
@@ -98,7 +99,7 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
         ) : (
           <div className="drills-complete-banner">
             <p>Rule mastered! Check your map →</p>
-            <a href="./index.html" className="btn-view-map">View Grammar Map</a>
+            <Link href="/" className="btn-view-map">View Grammar Map</Link>
           </div>
         )}
       </div>
