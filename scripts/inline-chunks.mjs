@@ -23,6 +23,40 @@ const chunksDir = join(outDir, '_next/static/chunks')
 const inlineCSS = process.env.INLINE_CSS === 'true'
 if (inlineCSS) console.log('CSS inlining enabled')
 
+// Script injected into html-preview builds to intercept Next.js router navigation.
+// In html-preview, the page loads inside the html-preview tool at a URL like:
+//   https://zondatw.github.io/html-preview/?url=https://github.com/.../index.html
+// When the user clicks "Today's Drill" or "← Back", Next.js does history.pushState('/drill')
+// which would navigate to zondatw.github.io/drill (404). This script intercepts those
+// pushState calls and redirects through the html-preview tool instead.
+const htmlPreviewNavScript = `<script>(function(){
+  var q=new URLSearchParams(window.location.search).get('url');
+  if(!q)return;
+  var base=q.substring(0,q.lastIndexOf('/')+1);
+  var pre=window.location.origin+window.location.pathname;
+  function toPreviewUrl(href){
+    // Skip external, hash, data, or already-absolute html-preview URLs
+    if(!href||href.startsWith('http')||href.startsWith('//')||href.startsWith('#')||href.startsWith('data:'))return null;
+    var f=href.startsWith('/')?href.slice(1):href.replace(/^\\.\\//, '');
+    if(!f||f==='/'||f==='')f='index';
+    f=f.replace(/\\.html$/,'');
+    return pre+'?url='+encodeURIComponent(base+f+'.html');
+  }
+  // Intercept link clicks before Next.js RSC prefetch kicks in.
+  // Next.js fetches /drill.txt?_rsc=... before doing pushState; if that 404s it
+  // falls back to a hard navigation. Catching the click first avoids this entirely.
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest('a[href]');
+    if(!a)return;
+    var href=a.getAttribute('href');
+    var target=toPreviewUrl(href);
+    if(!target)return;
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href=target;
+  },true);
+})()</script>`
+
 // Compute the path prefix that getAssetPrefix() should return.
 // It's the URL pathname up to (but not including) /_next/.
 // We derive it from the first absolute asset URL in the built HTML
@@ -117,6 +151,12 @@ function patchChunk(content, filename) {
 for (const file of htmlFiles) {
   const path = join(outDir, file)
   let html = readFileSync(path, 'utf8')
+
+  // Inject html-preview navigation intercept script before anything else in <head>
+  if (inlineCSS) {
+    html = html.replace(/<head([^>]*)>/, (m) => m + htmlPreviewNavScript)
+    console.log(`  injected: html-preview nav intercept`)
+  }
 
   // Inline CSS: replace <link rel="stylesheet" href="./_next/static/chunks/xxx.css">
   // with <style>...</style> to avoid any external CSS request.
