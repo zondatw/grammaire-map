@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "build:gh-pages": "next build && node scripts/inline-chunks.mjs",
+        "build:gh-pages": "BASE_PATH=/grammaire-map next build && node scripts/inline-chunks.mjs",
         "start": "next start",
         "lint": "eslint",
         "test": "vitest",
