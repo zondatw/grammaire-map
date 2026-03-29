@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { getCurriculum, getRule, getDrills, getGraphConfig } from '@/lib/content'
 import type { Rule, Drill, GraphConfig } from '@/lib/types'
 import DrillPage from '@/components/DrillPage'
@@ -12,12 +13,15 @@ export default async function DrillRoute() {
     orderedIds.map((id) => [id, getDrills(id)])
   )
 
+  // Suspense boundary required by Next.js when a client component calls useSearchParams()
   return (
-    <DrillPage
-      orderedIds={orderedIds}
-      allRules={allRules}
-      allDrills={allDrills}
-      graph={graph}
-    />
+    <Suspense>
+      <DrillPage
+        orderedIds={orderedIds}
+        allRules={allRules}
+        allDrills={allDrills}
+        graph={graph}
+      />
+    </Suspense>
   )
 }

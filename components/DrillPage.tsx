@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useSearchParams, useRouter } from 'next/navigation'
 import type { Rule, Drill, GraphConfig, MasteryState } from '@/lib/types'
 import { getMasteryState, saveMasteryState, advanceMastery, getStartDate } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
@@ -18,44 +19,67 @@ interface Props {
   graph: GraphConfig
 }
 
+const MASTERY_ICONS: Record<number, string> = { 0: '○', 1: '◑', 2: '●' }
+
 export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Props) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
   const [masteryState, setMasteryState] = useState<MasteryState | null>(null)
   const [todayRuleId, setTodayRuleId] = useState<string | null>(null)
+  const [selectedRuleId, setSelectedRuleId] = useState<string | null>(null)
   const [drillsDone, setDrillsDone] = useState(false)
 
   // Hydrate from localStorage after mount
   useEffect(() => {
     const state = getMasteryState()
     const startDate = getStartDate()
-    const ruleId = getTodayRuleId(orderedIds, startDate)
+    const todayId = getTodayRuleId(orderedIds, startDate)
+
+    // Determine which rule to show: URL param → today's rule
+    const paramId = searchParams.get('rule')
+    const resolvedId = (paramId && orderedIds.includes(paramId)) ? paramId : todayId
 
     let next = state
-    if (ruleId) {
-      // Mark today's rule as seen on load
-      next = advanceMastery(state, ruleId, 'seen')
+    if (resolvedId) {
+      next = advanceMastery(state, resolvedId, 'seen')
       saveMasteryState(next)
     }
 
     setMasteryState(next)
-    setTodayRuleId(ruleId)
-  }, [orderedIds])
+    setTodayRuleId(todayId)
+    setSelectedRuleId(resolvedId)
+  }, [orderedIds, searchParams])
 
-  const todayRule = todayRuleId
-    ? (allRules.find((r) => r.id === todayRuleId) ?? allRules[0])
+  const activeRule = selectedRuleId
+    ? (allRules.find((r) => r.id === selectedRuleId) ?? allRules[0])
     : allRules[0]
 
-  const drills = todayRule ? (allDrills[todayRule.id] ?? []) : []
+  const drills = activeRule ? (allDrills[activeRule.id] ?? []) : []
 
-  const handleDrillsComplete = useCallback(() => {
-    if (!todayRule) return
+  const isToday = selectedRuleId === todayRuleId
+
+  const handleRuleChange = useCallback((newId: string) => {
     setMasteryState((prev) => {
       const current = prev ?? {}
-      const next = advanceMastery(current, todayRule.id, 'drills_complete')
+      const next = advanceMastery(current, newId, 'seen')
+      saveMasteryState(next)
+      return next
+    })
+    setSelectedRuleId(newId)
+    setDrillsDone(false)
+    router.replace(`/drill?rule=${encodeURIComponent(newId)}`, { scroll: false })
+  }, [router])
+
+  const handleDrillsComplete = useCallback(() => {
+    if (!activeRule) return
+    setMasteryState((prev) => {
+      const current = prev ?? {}
+      const next = advanceMastery(current, activeRule.id, 'drills_complete')
       saveMasteryState(next)
       return next
     })
     setDrillsDone(true)
-  }, [todayRule])
+  }, [activeRule])
 
   // Loading skeleton until localStorage hydrated
   if (masteryState === null) {
@@ -71,7 +95,7 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
     )
   }
 
-  if (!todayRule) return <p>No rule found.</p>
+  if (!activeRule) return <p>No rule found.</p>
 
   return (
     <div className="app-layout">
@@ -79,16 +103,40 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
       <div className="panel-left">
         <header className="rule-header">
           <Link href="/" className="btn-back" aria-label="Back to map">←</Link>
-          {todayRuleId === todayRule.id && (
+          {isToday ? (
             <span className="badge-new">TODAY</span>
+          ) : (
+            <span className="badge-review">FREE STUDY</span>
           )}
-          <h1 className="rule-title" style={{ flex: 1 }}>{todayRule.title}</h1>
+          <h1 className="rule-title" style={{ flex: 1 }}>{activeRule.title}</h1>
           <ThemeToggle />
         </header>
 
+        {/* Rule picker */}
+        <div className="rule-selector-wrap">
+          <label htmlFor="rule-select" className="rule-selector-label">Study:</label>
+          <select
+            id="rule-select"
+            className="rule-selector"
+            value={selectedRuleId ?? ''}
+            onChange={(e) => handleRuleChange(e.target.value)}
+          >
+            {allRules.map((r) => {
+              const level = (masteryState[r.id] ?? 0) as number
+              const icon = MASTERY_ICONS[level] ?? '○'
+              const isTodayOption = r.id === todayRuleId
+              return (
+                <option key={r.id} value={r.id}>
+                  {icon} {r.title}{isTodayOption ? ' (today)' : ''}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+
         <article
           className="rule-body"
-          dangerouslySetInnerHTML={{ __html: renderMarkdown(todayRule.body) }}
+          dangerouslySetInnerHTML={{ __html: renderMarkdown(activeRule.body) }}
         />
 
         {!drillsDone ? (
@@ -98,8 +146,23 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
           </section>
         ) : (
           <div className="drills-complete-banner">
-            <p>Rule mastered! Check your map →</p>
-            <Link href="/" className="btn-view-map">View Grammar Map</Link>
+            <p>{isToday ? 'Rule mastered! Check your map →' : 'Section complete! Keep exploring ↓'}</p>
+            {isToday ? (
+              <Link href="/" className="btn-view-map">View Grammar Map</Link>
+            ) : (
+              <button
+                className="btn-view-map"
+                onClick={() => {
+                  const nextRule = allRules.find(
+                    (r) => r.id !== activeRule.id && (masteryState[r.id] ?? 0) < 2
+                  )
+                  if (nextRule) handleRuleChange(nextRule.id)
+                  else router.push('/')
+                }}
+              >
+                Next Section →
+              </button>
+            )}
           </div>
         )}
       </div>
@@ -111,6 +174,7 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
             graph={graph}
             masteryState={masteryState}
             todayRuleId={todayRuleId}
+            onNodeClick={(id) => handleRuleChange(id)}
           />
         </div>
       </div>

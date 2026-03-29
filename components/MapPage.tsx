@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import type { GraphConfig, MasteryState } from '@/lib/types'
 import { getMasteryState, getStartDate } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
@@ -18,6 +19,7 @@ interface Props {
 export default function MapPage({ graph, orderedIds }: Props) {
   const [masteryState, setMasteryState] = useState<MasteryState | null>(null)
   const [todayRuleId, setTodayRuleId] = useState<string | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     const state = getMasteryState()
@@ -26,6 +28,10 @@ export default function MapPage({ graph, orderedIds }: Props) {
     setMasteryState(state)
     setTodayRuleId(ruleId)
   }, [orderedIds])
+
+  const handleNodeClick = useCallback((id: string) => {
+    router.push(`/drill?rule=${encodeURIComponent(id)}`)
+  }, [router])
 
   const masteredCount = masteryState
     ? Object.values(masteryState).filter((v) => v === 2).length
@@ -50,6 +56,7 @@ export default function MapPage({ graph, orderedIds }: Props) {
         <span className="legend-item legend-seen">Seen</span>
         <span className="legend-item legend-mastered">Mastered</span>
         <span className="legend-item legend-today">Today</span>
+        <span className="legend-item legend-hint">Click any node to study it</span>
       </div>
 
       {masteryState !== null ? (
@@ -58,6 +65,7 @@ export default function MapPage({ graph, orderedIds }: Props) {
             graph={graph}
             masteryState={masteryState}
             todayRuleId={todayRuleId}
+            onNodeClick={handleNodeClick}
           />
         </div>
       ) : (

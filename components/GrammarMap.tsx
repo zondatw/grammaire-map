@@ -7,6 +7,7 @@ interface Props {
   graph: GraphConfig
   masteryState: MasteryState
   todayRuleId: string | null
+  onNodeClick?: (id: string) => void
 }
 
 // Node style by mastery level — reads from CSS custom properties so colors stay in sync with the design system
@@ -47,15 +48,17 @@ function readTokens(): CSSTokens {
   }
 }
 
-export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) {
+export default function GrammarMap({ graph, masteryState, todayRuleId, onNodeClick }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const cyRef = useRef<import('cytoscape').Core | null>(null)
 
   // Refs so observer/mq callbacks always see latest mastery without being recreated
   const masteryRef = useRef(masteryState)
   const todayRef = useRef(todayRuleId)
+  const onNodeClickRef = useRef(onNodeClick)
   useEffect(() => { masteryRef.current = masteryState }, [masteryState])
   useEffect(() => { todayRef.current = todayRuleId }, [todayRuleId])
+  useEffect(() => { onNodeClickRef.current = onNodeClick }, [onNodeClick])
 
   // Init Cytoscape once
   useEffect(() => {
@@ -118,6 +121,20 @@ export default function GrammarMap({ graph, masteryState, todayRuleId }: Props) 
       })
 
       cyRef.current = cy
+
+      // Node click → free study navigation
+      cy.on('tap', 'node', (evt) => {
+        const id = evt.target.id() as string
+        if (onNodeClickRef.current) onNodeClickRef.current(id)
+      })
+
+      // Show pointer cursor on hover
+      cy.on('mouseover', 'node', () => {
+        if (containerRef.current) containerRef.current.style.cursor = 'pointer'
+      })
+      cy.on('mouseout', 'node', () => {
+        if (containerRef.current) containerRef.current.style.cursor = ''
+      })
 
       // Apply initial mastery styles
       applyStyles(cy, masteryRef.current, todayRef.current, tokens)
