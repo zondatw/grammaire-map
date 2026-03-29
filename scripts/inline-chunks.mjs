@@ -42,8 +42,14 @@ function computeAssetPathPrefix() {
   const assetPrefix = process.env.ASSET_PREFIX
   if (assetPrefix) {
     try {
+      // Absolute URL — extract pathname prefix before /_next/
       return new URL(assetPrefix).pathname.replace(/\/$/, '')
-    } catch { /* ignore */ }
+    } catch { /* relative prefix like './' */ }
+    // Relative prefix: strip trailing slash so getAssetPrefix returns e.g. '.'
+    // TURBOPACK constructs chunk URLs as: getAssetPrefix() + '/_next/...'
+    // With '.' this becomes './_next/...' (relative) which resolves correctly
+    // on GitHub Pages and via <base href> in html-preview.
+    return assetPrefix.replace(/\/$/, '') || '.'
   }
   return ''
 }
