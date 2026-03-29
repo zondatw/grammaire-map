@@ -16,7 +16,13 @@ export function checkFillIn(
   userAnswer: string,
   correctAnswer: string
 ): { correct: boolean; accentMismatch: boolean; properSpelling: string } {
-  const normalize = (s: string) => s.trim().toLowerCase()
+  // Normalize apostrophe variants typed by mobile keyboards to a straight apostrophe.
+  // Covers: ' (U+2019 right single quote), ' (U+2018 left single quote),
+  // ʼ (U+02BC modifier letter), ` (U+0060 backtick), ′ (U+2032 prime).
+  const normalizeApostrophes = (s: string) =>
+    s.replace(/[\u2018\u2019\u02BC\u0060\u2032]/g, "'")
+
+  const normalize = (s: string) => normalizeApostrophes(s.trim().toLowerCase())
   const stripAccents = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 

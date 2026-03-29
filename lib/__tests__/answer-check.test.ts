@@ -57,4 +57,25 @@ describe('checkFillIn', () => {
     const result = checkFillIn('', 'La')
     expect(result.correct).toBe(false)
   })
+
+  it('accepts mobile right single quote (U+2019) as apostrophe', () => {
+    const result = checkFillIn('l\u2019ami', "l'ami")
+    expect(result.correct).toBe(true)
+    expect(result.accentMismatch).toBe(false)
+  })
+
+  it('accepts mobile left single quote (U+2018) as apostrophe', () => {
+    const result = checkFillIn('l\u2018ami', "l'ami")
+    expect(result.correct).toBe(true)
+  })
+
+  it('accepts modifier letter apostrophe (U+02BC) as apostrophe', () => {
+    const result = checkFillIn('l\u02BCami', "l'ami")
+    expect(result.correct).toBe(true)
+  })
+
+  it('apostrophe normalization also applies to correct answer side', () => {
+    const result = checkFillIn("l'ami", 'l\u2019ami')
+    expect(result.correct).toBe(true)
+  })
 })
