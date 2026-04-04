@@ -37,7 +37,9 @@ const htmlPreviewNavScript = `<script>(function(){
   function toPreviewUrl(href){
     // Skip external, hash, data, or already-absolute html-preview URLs
     if(!href||href.startsWith('http')||href.startsWith('//')||href.startsWith('#')||href.startsWith('data:'))return null;
-    var f=href.startsWith('/')?href.slice(1):href.replace(/^\\.\\//, '');
+    // Strip query string — state (lang, rule) is in localStorage; only the path matters for the file URL
+    var path=href.split('?')[0];
+    var f=path.startsWith('/')?path.slice(1):path.replace(/^\\.\\//, '');
     if(!f||f==='/'||f==='')f='index';
     f=f.replace(/\\.html$/,'');
     return pre+'?url='+encodeURIComponent(base+f+'.html');
