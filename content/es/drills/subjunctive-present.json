@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Quiero que ___ más despacio. (I want you to speak more slowly.) [hablar, tú]",
+    "answer": "hables",
+    "hint": "-ar subjunctive, tú form: habl- + es."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "It is important that we eat well. → Es importante que ___ bien.",
+    "choices": ["comemos", "comamos", "comeremos"],
+    "answer": "comamos",
+    "hint": "-er subjunctive, nosotros: com- + amos."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "No creo que ___ razón. (I don't think he's right.) [tener, él]",
+    "answer": "tenga",
+    "hint": "Tener: yo = tengo → drop -o → teng- + a (subjunctive)."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I hope the weather is nice. → Ojalá ___ buen tiempo.",
+    "choices": ["hace", "haga", "hará"],
+    "answer": "haga",
+    "hint": "Ojalá always triggers the subjunctive. Hacer: hago → hag- + a."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Espero que ___ a la fiesta. (I hope you come to the party.) [venir, tú]",
+    "answer": "vengas",
+    "hint": "Venir: yo = vengo → drop -o → veng- + as (tú subjunctive)."
+  }
+]

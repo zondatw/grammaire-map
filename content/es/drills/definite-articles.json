@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Which contraction is correct?",
+    "choices": ["de el mercado", "del mercado", "del' mercado"],
+    "answer": "del mercado",
+    "hint": "de + el always contracts to del."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Voy ___ parque. (to the park)",
+    "answer": "al",
+    "hint": "a + el contracts to al."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which article is correct? ___ agua está fría.",
+    "choices": ["La", "El", "Los"],
+    "answer": "El",
+    "hint": "Use el (not la) before feminine nouns starting with a stressed a- sound."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ flores son bonitas. (The flowers are pretty.)",
+    "answer": "Las",
+    "hint": "Flowers (flores) is feminine plural."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Vengo ___ banco. (I'm coming from the bank.)",
+    "choices": ["de el", "del", "al"],
+    "answer": "del",
+    "hint": "de + el → del (mandatory contraction)."
+  }
+]

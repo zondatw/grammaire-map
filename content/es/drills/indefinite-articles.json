@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Tengo ___ perro. (I have a dog.)",
+    "choices": ["una", "unos", "un"],
+    "answer": "un",
+    "hint": "Perro is masculine singular → un."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Hay ___ flores en la mesa. (There are some flowers on the table.)",
+    "answer": "unas",
+    "hint": "Flores is feminine plural → unas."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ella es ___. (She is a teacher.) [profesora — no modification]",
+    "choices": ["una profesora", "profesora", "la profesora"],
+    "answer": "profesora",
+    "hint": "Omit the article after ser with an unmodified profession."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Salió sin ___. (He left without an umbrella.) [paraguas]",
+    "answer": "paraguas",
+    "hint": "After sin, no article is used."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Hay ___ veinte personas. (There are about twenty people.)",
+    "choices": ["un", "unos", "unas"],
+    "answer": "unos",
+    "hint": "Unos + number = about/approximately (personas is feminine but unos agrees with the number idea)."
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "He is boring. (personality) → Él ___ aburrido.",
+    "choices": ["está", "es", "son"],
+    "answer": "es",
+    "hint": "With ser, aburrido = boring (personality trait)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ella ___ lista. (She is ready.)",
+    "answer": "está",
+    "hint": "With estar, listo/a = ready (current state)."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "The soup tastes good right now. → La sopa ___ buena.",
+    "choices": ["es", "está", "son"],
+    "answer": "está",
+    "hint": "With estar, bueno/a = tasty / feeling well (temporary)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Madrid ___ en España. (Madrid is in Spain.)",
+    "answer": "está",
+    "hint": "Geographical location always uses estar."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "He is sick. → Él ___ malo.",
+    "choices": ["es", "está", "son"],
+    "answer": "está",
+    "hint": "With estar, malo = sick. With ser, malo = bad/evil."
+  }
+]

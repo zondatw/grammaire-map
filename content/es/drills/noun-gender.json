@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Which article goes with 'problema'?",
+    "choices": ["la", "el", "los"],
+    "answer": "el",
+    "hint": "Greek-origin words ending in -a (problema, tema, sistema) are masculine."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ ciudad es grande. (The city is big.)",
+    "answer": "La",
+    "hint": "Ciudad ends in -dad, which is always feminine."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which noun is an exception to the -a = feminine rule?",
+    "choices": ["la casa", "el día", "la planta"],
+    "answer": "el día",
+    "hint": "Día ends in -a but is masculine."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ canción es hermosa. (The song is beautiful.)",
+    "answer": "La",
+    "hint": "Nouns ending in -ción are always feminine."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Which noun is feminine despite ending in -o?",
+    "choices": ["el libro", "el vino", "la mano"],
+    "answer": "la mano",
+    "hint": "Mano is a classic exception — ends in -o but is feminine."
+  }
+]

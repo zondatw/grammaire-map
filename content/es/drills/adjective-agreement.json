@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "una chica ___ (tall) [alto]",
+    "answer": "alta",
+    "hint": "Feminine singular: change -o to -a."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "un ___ libro (a good book)",
+    "choices": ["bueno", "buen", "buena"],
+    "answer": "buen",
+    "hint": "Bueno shortens to buen before a masculine singular noun."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "unas casas ___ (pretty) [bonito]",
+    "answer": "bonitas",
+    "hint": "Feminine plural: change -o to -a, add -s."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "un ___ artista (a great artist)",
+    "choices": ["grande", "grandes", "gran"],
+    "answer": "gran",
+    "hint": "Grande shortens to gran before any singular noun."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "unos chicos ___ (intelligent) [inteligente]",
+    "answer": "inteligentes",
+    "hint": "Adjectives ending in -e: just add -s for the plural."
+  }
+]

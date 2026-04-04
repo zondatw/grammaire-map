@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Ayer ___ con ella. (Yesterday I spoke with her.) [hablar]",
+    "answer": "hablé",
+    "hint": "-ar preterite, yo form: -é (with accent)."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "They arrived late. → ___ tarde.",
+    "choices": ["Llegaron", "Llegaban", "Llegan"],
+    "answer": "Llegaron",
+    "hint": "-ar preterite, ellos form: -aron."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "¿___ la cena? (Did you [tú] eat dinner?) [comer]",
+    "answer": "Comiste",
+    "hint": "-er preterite, tú form: -iste."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "We lived in Paris last year. → ___ en París el año pasado.",
+    "choices": ["Vivíamos", "Vivimos", "Vivieron"],
+    "answer": "Vivimos",
+    "hint": "-ir preterite, nosotros form: -imos (same as present — context clarifies)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ella ___ a las diez. (She left at ten.) [salir]",
+    "answer": "salió",
+    "hint": "-ir preterite, él/ella form: -ió (with accent)."
+  }
+]

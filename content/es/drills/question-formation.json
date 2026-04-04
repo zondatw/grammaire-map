@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "___ te llamas? (What is your name?)",
+    "answer": "¿Cómo",
+    "hint": "Cómo te llamas is the set phrase for asking someone's name."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Why are you crying? → ___ lloras?",
+    "choices": ["¿Porque", "¿Por qué", "¿Cómo"],
+    "answer": "¿Por qué",
+    "hint": "Por qué (two words, accented) = why. Porque (one word) = because."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ hermanos tienes? (How many siblings do you have?)",
+    "answer": "¿Cuántos",
+    "hint": "Cuántos asks about a masculine/mixed plural quantity."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Where is the bathroom? → ___ está el baño?",
+    "choices": ["¿Quién", "¿Dónde", "¿Cuándo"],
+    "answer": "¿Dónde",
+    "hint": "Dónde = where."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ haces? (What are you doing?)",
+    "answer": "¿Qué",
+    "hint": "Qué asks what. Remember the opening ¿."
+  }
+]

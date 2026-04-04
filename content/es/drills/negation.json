@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "___ hablo francés. (I don't speak French.)",
+    "answer": "No",
+    "hint": "Place no directly before the verb."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I don't have anything. → No tengo ___.",
+    "choices": ["algo", "nada", "nadie"],
+    "answer": "nada",
+    "hint": "Nada = nothing; used with no for double negation."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "No viene ___. (Nobody is coming.)",
+    "answer": "nadie",
+    "hint": "Nadie = nobody."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I never eat meat. → ___ como carne.",
+    "choices": ["No nunca", "Nunca", "Jamás no"],
+    "answer": "Nunca",
+    "hint": "When the negative word comes before the verb, no is not needed."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "No quiero ni café ___ té. (I want neither coffee nor tea.)",
+    "answer": "ni",
+    "hint": "Ni ... ni = neither ... nor."
+  }
+]

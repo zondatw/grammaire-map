@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "pez → ___ (plural)",
+    "answer": "peces",
+    "hint": "Nouns ending in -z change z to c and add -es."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "lápiz → plural",
+    "choices": ["lápizs", "lápices", "lápizes"],
+    "answer": "lápices",
+    "hint": "-z → -ces: lápiz → lápices."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "lección → ___ (plural)",
+    "answer": "lecciones",
+    "hint": "Drop the accent when adding -es: lección → lecciones."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "el lunes → plural",
+    "choices": ["los luneses", "los lunes", "los lune"],
+    "answer": "los lunes",
+    "hint": "Nouns ending in unstressed vowel + s are invariable."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "joven → ___ (plural)",
+    "answer": "jóvenes",
+    "hint": "Add an accent to maintain stress: joven → jóvenes."
+  }
+]

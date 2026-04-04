@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useSearchParams, useRouter } from 'next/navigation'
-import type { Rule, Drill, GraphConfig, MasteryState } from '@/lib/types'
-import { getMasteryState, saveMasteryState, advanceMastery, getStartDate } from '@/lib/state'
+import type { Language, LanguageData, MasteryState } from '@/lib/types'
+import { SUPPORTED_LANGUAGES } from '@/lib/types'
+import { getMasteryState, saveMasteryState, advanceMastery, getStartDate, getLanguage, saveLanguage } from '@/lib/state'
 import { getTodayRuleId } from '@/lib/curriculum'
 import DrillCard from './DrillCard'
 import ThemeToggle from './ThemeToggle'
@@ -13,17 +14,15 @@ import ThemeToggle from './ThemeToggle'
 const GrammarMap = dynamic(() => import('./GrammarMap'), { ssr: false })
 
 interface Props {
-  orderedIds: string[]
-  allRules: Rule[]
-  allDrills: Record<string, Drill[]>
-  graph: GraphConfig
+  allLanguages: Record<string, LanguageData>
 }
 
 const MASTERY_ICONS: Record<number, string> = { 0: '○', 1: '◑', 2: '●' }
 
-export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Props) {
+export default function DrillPage({ allLanguages }: Props) {
   const searchParams = useSearchParams()
   const router = useRouter()
+  const [lang, setLang] = useState<Language>('fr')
   const [masteryState, setMasteryState] = useState<MasteryState | null>(null)
   const [todayRuleId, setTodayRuleId] = useState<string | null>(null)
   const [selectedRuleId, setSelectedRuleId] = useState<string | null>(null)
@@ -31,66 +30,91 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
 
   // Hydrate from localStorage after mount
   useEffect(() => {
-    const state = getMasteryState()
-    const startDate = getStartDate()
-    const todayId = getTodayRuleId(orderedIds, startDate)
+    const paramLang = searchParams.get('lang') as Language | null
+    const savedLang = getLanguage()
+    const activeLang: Language = (paramLang === 'fr' || paramLang === 'es') ? paramLang : savedLang
 
-    // Determine which rule to show: URL param → today's rule
+    if (activeLang !== savedLang) saveLanguage(activeLang)
+    setLang(activeLang)
+
+    const data = allLanguages[activeLang]
+    if (!data) return
+
+    const state = getMasteryState(activeLang)
+    const startDate = getStartDate(activeLang)
+    const todayId = getTodayRuleId(data.orderedIds, startDate)
+
     const paramId = searchParams.get('rule')
-    const resolvedId = (paramId && orderedIds.includes(paramId)) ? paramId : todayId
+    const resolvedId = (paramId && data.orderedIds.includes(paramId)) ? paramId : todayId
 
     let next = state
     if (resolvedId) {
       next = advanceMastery(state, resolvedId, 'seen')
-      saveMasteryState(next)
+      saveMasteryState(next, activeLang)
     }
 
     setMasteryState(next)
     setTodayRuleId(todayId)
     setSelectedRuleId(resolvedId)
-  }, [orderedIds, searchParams])
+  }, [allLanguages, searchParams])
 
-  const activeRule = selectedRuleId
-    ? (allRules.find((r) => r.id === selectedRuleId) ?? allRules[0])
-    : allRules[0]
+  const data = allLanguages[lang]
+  const activeRule = selectedRuleId && data
+    ? (data.rules.find((r) => r.id === selectedRuleId) ?? data.rules[0])
+    : data?.rules[0]
 
-  const drills = activeRule ? (allDrills[activeRule.id] ?? []) : []
-
+  const drills = activeRule && data ? (data.drills[activeRule.id] ?? []) : []
   const isToday = selectedRuleId === todayRuleId
+
+  const handleLangChange = useCallback((newLang: Language) => {
+    saveLanguage(newLang)
+    setLang(newLang)
+    setDrillsDone(false)
+
+    const newData = allLanguages[newLang]
+    if (!newData) return
+    const state = getMasteryState(newLang)
+    const startDate = getStartDate(newLang)
+    const todayId = getTodayRuleId(newData.orderedIds, startDate)
+
+    const next = todayId ? advanceMastery(state, todayId, 'seen') : state
+    if (todayId) saveMasteryState(next, newLang)
+
+    setMasteryState(next)
+    setTodayRuleId(todayId)
+    setSelectedRuleId(todayId)
+    router.replace(`/drill?lang=${newLang}`, { scroll: false })
+  }, [allLanguages, router])
 
   const handleRuleChange = useCallback((newId: string) => {
     setMasteryState((prev) => {
       const current = prev ?? {}
       const next = advanceMastery(current, newId, 'seen')
-      saveMasteryState(next)
+      saveMasteryState(next, lang)
       return next
     })
     setSelectedRuleId(newId)
     setDrillsDone(false)
-    router.replace(`/drill?rule=${encodeURIComponent(newId)}`, { scroll: false })
-  }, [router])
+    router.replace(`/drill?rule=${encodeURIComponent(newId)}&lang=${lang}`, { scroll: false })
+  }, [router, lang])
 
   const handleDrillsComplete = useCallback(() => {
     if (!activeRule) return
     setMasteryState((prev) => {
       const current = prev ?? {}
       const next = advanceMastery(current, activeRule.id, 'drills_complete')
-      saveMasteryState(next)
+      saveMasteryState(next, lang)
       return next
     })
     setDrillsDone(true)
-  }, [activeRule])
+  }, [activeRule, lang])
 
-  // Loading skeleton until localStorage hydrated
-  if (masteryState === null) {
+  // Loading skeleton
+  if (masteryState === null || !data) {
     return (
       <div className="app-layout">
-        <div className="panel-left">
-          <div className="skeleton-rule" />
-        </div>
-        <div className="panel-right">
-          <div className="skeleton-map" />
-        </div>
+        <div className="panel-left"><div className="skeleton-rule" /></div>
+        <div className="panel-right"><div className="skeleton-map" /></div>
       </div>
     )
   }
@@ -99,10 +123,9 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
 
   return (
     <div className="app-layout">
-      {/* Left panel: rule card + drills */}
       <div className="panel-left">
         <header className="rule-header">
-          <Link href="/" className="btn-back" aria-label="Back to map">←</Link>
+          <Link href={`/?lang=${lang}`} className="btn-back" aria-label="Back to map">←</Link>
           {isToday ? (
             <span className="badge-new">TODAY</span>
           ) : (
@@ -112,8 +135,20 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
           <ThemeToggle />
         </header>
 
-        {/* Rule picker */}
+        {/* Language + rule pickers */}
         <div className="rule-selector-wrap">
+          <div className="lang-switcher lang-switcher-inline">
+            {SUPPORTED_LANGUAGES.map((l) => (
+              <button
+                key={l.code}
+                className={`lang-btn${lang === l.code ? ' active' : ''}`}
+                onClick={() => handleLangChange(l.code)}
+                title={l.label}
+              >
+                {l.flag}
+              </button>
+            ))}
+          </div>
           <label htmlFor="rule-select" className="rule-selector-label">Study:</label>
           <select
             id="rule-select"
@@ -121,13 +156,12 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
             value={selectedRuleId ?? ''}
             onChange={(e) => handleRuleChange(e.target.value)}
           >
-            {allRules.map((r) => {
+            {data.rules.map((r) => {
               const level = (masteryState[r.id] ?? 0) as number
               const icon = MASTERY_ICONS[level] ?? '○'
-              const isTodayOption = r.id === todayRuleId
               return (
                 <option key={r.id} value={r.id}>
-                  {icon} {r.title}{isTodayOption ? ' (today)' : ''}
+                  {icon} {r.title}{r.id === todayRuleId ? ' (today)' : ''}
                 </option>
               )
             })}
@@ -148,16 +182,16 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
           <div className="drills-complete-banner">
             <p>{isToday ? 'Rule mastered! Check your map →' : 'Section complete! Keep exploring ↓'}</p>
             {isToday ? (
-              <Link href="/" className="btn-view-map">View Grammar Map</Link>
+              <Link href={`/?lang=${lang}`} className="btn-view-map">View Grammar Map</Link>
             ) : (
               <button
                 className="btn-view-map"
                 onClick={() => {
-                  const nextRule = allRules.find(
+                  const nextRule = data.rules.find(
                     (r) => r.id !== activeRule.id && (masteryState[r.id] ?? 0) < 2
                   )
                   if (nextRule) handleRuleChange(nextRule.id)
-                  else router.push('/')
+                  else router.push(`/?lang=${lang}`)
                 }}
               >
                 Next Section →
@@ -167,11 +201,10 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
         )}
       </div>
 
-      {/* Right panel: grammar map */}
       <div className="panel-right">
         <div className="map-container">
           <GrammarMap
-            graph={graph}
+            graph={data.graph}
             masteryState={masteryState}
             todayRuleId={todayRuleId}
             onNodeClick={(id) => handleRuleChange(id)}
@@ -182,35 +215,25 @@ export default function DrillPage({ orderedIds, allRules, allDrills, graph }: Pr
   )
 }
 
-// Minimal markdown renderer for rule body content
 function renderMarkdown(md: string): string {
   let html = md
-    // Headings
     .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-    // Bold
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // Italic
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Inline code
     .replace(/`(.+?)`/g, '<code>$1</code>')
-    // List items
     .replace(/^- (.+)$/gm, '<li>$1</li>')
 
-  // Wrap consecutive <li> lines in <ul> — no dotAll flag so . stays line-scoped
   html = html.replace(/((?:<li>[^\n]*<\/li>\n?)+)/g, (block) => `<ul>${block}</ul>`)
 
-  // Table rows: | cell | cell |
   html = html.replace(/^\|(.+)\|$/gm, (line) => {
     const cells = line.slice(1, -1).split('|').map((c) => `<td>${c.trim()}</td>`).join('')
     return `<tr>${cells}</tr>`
   })
-  // Wrap consecutive <tr> in <table>, remove separator rows
   html = html.replace(/(<tr>.*<\/tr>\n?)+/gs, (block) => {
     const cleaned = block.replace(/<tr>(<td>[-:| ]+<\/td>)+<\/tr>\n?/g, '')
     return `<table>${cleaned}</table>`
   })
 
-  // Paragraphs for bare text lines
   html = html.replace(/^(?!<[a-zA-Z/])(.*\S.*)$/gm, '<p>$1</p>')
 
   return html

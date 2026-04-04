@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Este café es ___ caro que ese. (This coffee is more expensive than that one.)",
+    "answer": "más",
+    "hint": "Comparative of superiority: más + adjective + que."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "She speaks as fast as her mother. → Habla ___ rápido como su madre.",
+    "choices": ["más", "tan", "menos"],
+    "answer": "tan",
+    "hint": "Equality comparison: tan + adjective + como."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Es la ___ película del año. (It is the best film of the year.)",
+    "answer": "mejor",
+    "hint": "Mejor is the irregular superlative of bueno."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "My sister is older than me. → Mi hermana es ___ que yo.",
+    "choices": ["más grande", "mayor", "más vieja"],
+    "answer": "mayor",
+    "hint": "Mayor is the irregular comparative of grande when referring to age."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Tengo más ___ veinte libros. (I have more than twenty books.)",
+    "answer": "de",
+    "hint": "Use más de (not más que) before a number."
+  }
+]

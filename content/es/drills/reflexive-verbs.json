@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "___ llamo Carlos. (My name is Carlos.)",
+    "answer": "Me",
+    "hint": "Yo form of reflexive: me."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "She showers every morning. → Ella ___ cada mañana.",
+    "choices": ["se ducha", "me ducha", "te ducha"],
+    "answer": "se ducha",
+    "hint": "Él/ella reflexive pronoun is se."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "¿A qué hora te ___? (What time do you go to bed?) [acostarse]",
+    "answer": "acuestas",
+    "hint": "Acostarse is an o→ue stem-changer: tú form → te acuestas."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I want to shower now. → Quiero ___.",
+    "choices": ["ducharme", "me duchar", "se duchar"],
+    "answer": "ducharme",
+    "hint": "Attach the reflexive pronoun to the infinitive: duchar + me."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Estoy ___. (I'm getting dressed.) [vestirse, yo]",
+    "answer": "vistiéndome",
+    "hint": "Attach me to the gerund and add accent: vistiéndo + me."
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Mañana ___ con ella. (Tomorrow I will speak with her.) [hablar]",
+    "answer": "hablaré",
+    "hint": "Simple future: infinitive + é (yo form)."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Will you come to the party? → ¿___ a la fiesta?",
+    "choices": ["Vendrás", "Venirás", "Vienes"],
+    "answer": "Vendrás",
+    "hint": "Venir has irregular stem: vendr- + ás."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Vamos ___ comer fuera. (We are going to eat out.)",
+    "answer": "a",
+    "hint": "Near future: ir + a + infinitive."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "They will have a lot of work. → ___ mucho trabajo.",
+    "choices": ["Tienen", "Tendrán", "Tenían"],
+    "answer": "Tendrán",
+    "hint": "Tener irregular stem: tendr- + án (ellos)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "¿Qué ___ el fin de semana? (What will you do this weekend?) [hacer, tú]",
+    "answer": "harás",
+    "hint": "Hacer irregular stem: har- + ás."
+  }
+]

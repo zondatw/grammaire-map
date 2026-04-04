@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ libro (this book — near the speaker)",
+    "choices": ["Ese", "Este", "Aquel"],
+    "answer": "Este",
+    "hint": "Este = this (near the speaker), masculine singular."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ flores son bonitas. (Those flowers — near the listener)",
+    "answer": "Esas",
+    "hint": "Esa → esas for feminine plural, mid distance."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "That mountain over there → ___ montaña",
+    "choices": ["Esta", "Esa", "Aquella"],
+    "answer": "Aquella",
+    "hint": "Aquella = that over there, feminine singular."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "¿Qué es ___? (What is this? — unidentified thing)",
+    "answer": "esto",
+    "hint": "Neuter demonstrative esto for an unidentified thing."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ edificios son antiguos. (Those buildings over there are old.)",
+    "choices": ["Estos", "Esos", "Aquellos"],
+    "answer": "Aquellos",
+    "hint": "Aquellos = those (far), masculine plural."
+  }
+]

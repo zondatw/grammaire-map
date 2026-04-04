@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "She is a doctor. → Ella ___ médica.",
+    "choices": ["está", "es", "son"],
+    "answer": "es",
+    "hint": "Professions use ser."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ en casa ahora. (I am at home now.)",
+    "answer": "Estoy",
+    "hint": "Location uses estar. Yo form of estar is estoy."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "It is three o'clock. → ___ las tres.",
+    "choices": ["Están", "Es", "Son"],
+    "answer": "Son",
+    "hint": "Time (plural hours) uses son (ser, ellas form)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ella ___ cansada hoy. (She is tired today.)",
+    "answer": "está",
+    "hint": "Temporary states use estar."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "We are from Spain. → Nosotros ___ de España.",
+    "choices": ["estamos", "somos", "son"],
+    "answer": "somos",
+    "hint": "Origin uses ser. Nosotros form is somos."
+  }
+]

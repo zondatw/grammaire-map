@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "El libro ___ leí era bueno. (The book that I read was good.)",
+    "answer": "que",
+    "hint": "Que is the most common relative pronoun for things."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I don't understand what you're saying. → No entiendo ___ dices.",
+    "choices": ["que", "lo que", "quien"],
+    "answer": "lo que",
+    "hint": "Lo que = what/the thing that (no specific antecedent noun)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "La profesora de ___ te hablé es brillante. (The teacher about whom I told you is brilliant.)",
+    "answer": "quien",
+    "hint": "After a preposition, use quien (not que) for people."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "The building in which I live is old. → El edificio en ___ vivo es antiguo.",
+    "choices": ["que", "el que", "quien"],
+    "answer": "el que",
+    "hint": "After preposition + specific noun antecedent, el que agrees in gender/number."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "La escritora ___ novela gané es famosa. (The writer whose novel I won is famous.)",
+    "answer": "cuya",
+    "hint": "Cuyo/cuya/cuyos/cuyas = whose; agrees with the possessed noun (novela = fem)."
+  }
+]

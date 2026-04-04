@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "___ veo todos los días. (I see him every day.)",
+    "answer": "Lo",
+    "hint": "Lo = him/it (masculine direct object)."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I give him the book. → ___ doy el libro.",
+    "choices": ["Lo", "Le", "Se"],
+    "answer": "Le",
+    "hint": "Le is the indirect object pronoun for él/ella."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ mando ahora. (I'm sending it to him now.) [lo + le combined]",
+    "answer": "Se lo",
+    "hint": "Le + lo → Se lo. Indirect comes first, then direct."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Can you give it to me? → ¿___ puedes dar?",
+    "choices": ["Lo me", "Me lo", "Me le"],
+    "answer": "Me lo",
+    "hint": "Indirect (me) before direct (lo): me lo."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "¡Escúcha___! (Listen to me!)",
+    "answer": "me",
+    "hint": "Attach the direct object pronoun to the affirmative command."
+  }
+]

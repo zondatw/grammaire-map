@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "___ libro es interesante. (My book is interesting.)",
+    "answer": "Mi",
+    "hint": "Mi = my (singular, no gender change)."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ casa es grande. (Our house is big.)",
+    "choices": ["Nuestro", "Nuestra", "Nuestras"],
+    "answer": "Nuestra",
+    "hint": "Nuestro/a agrees with the noun: casa is feminine."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ amigos son simpáticos. (Your friends are nice.) [tú]",
+    "answer": "Tus",
+    "hint": "Tu becomes tus before a plural noun."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "He is a friend of mine. → Es un amigo ___.",
+    "choices": ["mío", "mi", "míos"],
+    "answer": "mío",
+    "hint": "Long (stressed) possessive after the noun: mío (masc. sg.)."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ padres viven en Valencia. (Her parents live in Valencia.)",
+    "answer": "Sus",
+    "hint": "Su becomes sus before a plural noun."
+  }
+]

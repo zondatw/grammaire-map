@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "Yo ___ español. (I speak Spanish.) [hablar]",
+    "answer": "hablo",
+    "hint": "-ar verb, yo form: drop -ar, add -o."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ella ___ en Madrid. (She lives in Madrid.) [vivir]",
+    "choices": ["vive", "vivo", "vivís"],
+    "answer": "vive",
+    "hint": "-ir verb, él/ella form: drop -ir, add -e."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Nosotros ___ juntos. (We eat together.) [comer]",
+    "answer": "comemos",
+    "hint": "-er verb, nosotros form: drop -er, add -emos."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "¿Vosotros ___ mucho? (Do you all work a lot?) [trabajar]",
+    "choices": ["trabajáis", "trabajan", "trabajamos"],
+    "answer": "trabajáis",
+    "hint": "-ar verb, vosotros form: -áis."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ellos ___ agua. (They drink water.) [beber]",
+    "answer": "beben",
+    "hint": "-er verb, ellos form: drop -er, add -en."
+  }
+]

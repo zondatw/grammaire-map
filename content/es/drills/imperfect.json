@@ -1,0 +1,34 @@
+[
+  {
+    "type": "fill-in",
+    "prompt": "De niño, ___ mucho. (As a child, I used to eat a lot.) [comer]",
+    "answer": "comía",
+    "hint": "-er imperfect, yo form: -ía."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "We always used to go to the park. → Siempre ___ al parque.",
+    "choices": ["fuimos", "íbamos", "vamos"],
+    "answer": "íbamos",
+    "hint": "Ir is irregular in the imperfect: iba, ibas, iba, íbamos..."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ las tres cuando llegó. (It was three o'clock when he arrived.) [ser]",
+    "answer": "Eran",
+    "hint": "Time in the past uses ser imperfect: eran las tres."
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "She was tall and had long hair. → Era alta y ___ el pelo largo.",
+    "choices": ["tenía", "tuvo", "tiene"],
+    "answer": "tenía",
+    "hint": "Ongoing past description uses imperfect: tener → tenía."
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Siempre ___ en casa los domingos. (They always stayed home on Sundays.) [quedarse → quedarse, ellos]",
+    "answer": "se quedaban",
+    "hint": "-ar imperfect, ellos reflexive: se quedaban."
+  }
+]
