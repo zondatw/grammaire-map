@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Non mangio ___ la pizza.",
+    "choices": ["mai", "sempre", "spesso"],
+    "answer": "mai",
+    "hint": "non + mai = never"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ ho niente da dirti.",
+    "answer": "Non",
+    "hint": "non is required before the verb with niente"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Non abita ___ in questa città.",
+    "choices": ["più", "ancora", "nessuno"],
+    "answer": "più",
+    "hint": "non + più = no longer / not anymore"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Non è ___ arrivato il treno.",
+    "answer": "ancora",
+    "hint": "non + ancora = not yet"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Non ho visto ___ al parco.",
+    "choices": ["nessuno", "niente", "mai"],
+    "answer": "nessuno",
+    "hint": "nessuno = nobody (person)"
+  }
+]

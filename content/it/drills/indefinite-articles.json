@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho incontrato ___ amica al mercato.",
+    "choices": ["un", "una", "un'"],
+    "answer": "un'",
+    "hint": "feminine noun before a vowel"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "C'è ___ studente fuori dalla porta.",
+    "choices": ["un", "uno", "una"],
+    "answer": "uno",
+    "hint": "masculine before s+consonant"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Voglio comprare ___ zaino nuovo.",
+    "answer": "uno",
+    "hint": "masculine before z"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho bisogno di ___ ora per finire.",
+    "choices": ["un", "uno", "un'"],
+    "answer": "un'",
+    "hint": "ora is feminine and starts with a vowel"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Sul tavolo ci sono ___ libri e ___ penne.",
+    "answer": "dei",
+    "hint": "partitive article for masculine plural"
+  }
+]

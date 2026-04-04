@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Marco è più alto ___ Luca.",
+    "choices": ["di", "che", "da"],
+    "answer": "di",
+    "hint": "di when comparing two different people"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Questa torta è ___! Non ho mai mangiato niente di così buono.",
+    "answer": "ottima",
+    "hint": "absolute superlative of buono (irregular)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "È più intelligente ___ simpatico.",
+    "choices": ["di", "che", "quanto"],
+    "answer": "che",
+    "hint": "che when comparing two qualities of the same subject"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Lei è la studentessa ___ della scuola.",
+    "answer": "migliore",
+    "hint": "relative superlative of buona (irregular)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Questo esercizio è ___ difficile di quello.",
+    "choices": ["più", "tanto", "molto"],
+    "answer": "più",
+    "hint": "comparative of superiority with più + adj + di"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ libro è molto interessante.",
+    "choices": ["Il", "Lo", "La"],
+    "answer": "Il",
+    "hint": "masculine singular before a regular consonant"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ studente studia ogni giorno.",
+    "choices": ["Il", "Lo", "L'"],
+    "answer": "Lo",
+    "hint": "masculine singular before s+consonant"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ amiche di Maria sono simpatiche.",
+    "answer": "Le",
+    "hint": "feminine plural"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho dimenticato ___ zaino a scuola.",
+    "choices": ["il", "lo", "l'"],
+    "answer": "lo",
+    "hint": "masculine singular before z"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ amica di Paolo si chiama Sofia.",
+    "answer": "L'",
+    "hint": "feminine singular before a vowel"
+  }
+]

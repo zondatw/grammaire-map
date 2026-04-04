@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ libro è molto noioso.",
+    "choices": ["Quel", "Quello", "Quei"],
+    "answer": "Quel",
+    "hint": "quello before a masculine noun starting with a regular consonant"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ studente è molto bravo.",
+    "answer": "Quello",
+    "hint": "quello before s+consonant"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Mi piacciono ___ scarpe rosse.",
+    "choices": ["queste", "questo", "questa"],
+    "answer": "queste",
+    "hint": "feminine plural of questo"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ ragazzi giocano in giardino.",
+    "answer": "Quei",
+    "hint": "quello before masculine plural regular consonant"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Preferisco ___ borsa nera.",
+    "choices": ["quella", "quel", "quell'"],
+    "answer": "quella",
+    "hint": "feminine singular before a consonant"
+  }
+]

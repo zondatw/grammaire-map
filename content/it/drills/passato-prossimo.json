@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Ieri ___ mangiato al ristorante.",
+    "choices": ["ho", "sono", "ho stato"],
+    "answer": "ho",
+    "hint": "mangiare is transitive — uses avere"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Lei ___ andata a Milano la settimana scorsa.",
+    "answer": "è",
+    "hint": "andare uses essere"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Abbiamo ___ un bel film ieri sera.",
+    "choices": ["visto", "veduto", "guardato"],
+    "answer": "visto",
+    "hint": "vedere has an irregular participle: visto"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "I ragazzi sono ___ alle tre.",
+    "answer": "partiti",
+    "hint": "partire + essere, masculine plural participle"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Non ho ___ la lettera di Paolo.",
+    "choices": ["letto", "legguto", "leggito"],
+    "answer": "letto",
+    "hint": "leggere has an irregular participle: letto"
+  }
+]

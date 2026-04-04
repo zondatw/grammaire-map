@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho comprato una giacca ___.",
+    "choices": ["nuovo", "nuova", "nuovi"],
+    "answer": "nuova",
+    "hint": "feminine singular adjective to agree with giacca"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Questi studenti sono molto ___.",
+    "answer": "bravi",
+    "hint": "masculine plural of bravo"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "È una giornata ___.",
+    "choices": ["bello", "bella", "belli"],
+    "answer": "bella",
+    "hint": "feminine singular of bello"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Le scarpe sono troppo ___.",
+    "answer": "grandi",
+    "hint": "2-form adjective, feminine plural (same as masc. pl.)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho visto ___ film ieri sera.",
+    "choices": ["un bel", "un bello", "un bell'"],
+    "answer": "un bel",
+    "hint": "bello before a masculine noun starting with a regular consonant"
+  }
+]

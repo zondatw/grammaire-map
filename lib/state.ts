@@ -7,13 +7,14 @@ const START_DATE_KEY = 'startDate_v1'
 const LANGUAGE_KEY = 'grammaireMap_lang'
 
 function masteryKey(lang: Language): string {
-  return lang === 'fr' ? MASTERY_KEY_FR : MASTERY_KEY_ES
+  if (lang === 'fr') return MASTERY_KEY_FR
+  return `grammaireMap_v1_${lang}`
 }
 
 export function getLanguage(): Language {
   if (typeof window === 'undefined') return 'fr'
   const stored = localStorage.getItem(LANGUAGE_KEY)
-  if (stored === 'fr' || stored === 'es') return stored
+  if (stored === 'fr' || stored === 'es' || stored === 'it') return stored
   return 'fr'
 }
 

@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Il libro ___ leggo è molto interessante.",
+    "choices": ["che", "cui", "chi"],
+    "answer": "che",
+    "hint": "che as direct object relative pronoun"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "L'amica con ___ viaggio si chiama Marta.",
+    "answer": "cui",
+    "hint": "use cui after prepositions"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ studia ottiene buoni voti.",
+    "choices": ["Chi", "Che", "Cui"],
+    "answer": "Chi",
+    "hint": "chi = whoever / those who (no antecedent)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "La città in ___ abito è bellissima.",
+    "answer": "cui",
+    "hint": "cui after the preposition in"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Il ragazzo ___ ha vinto il concorso è molto bravo.",
+    "choices": ["che", "cui", "quale"],
+    "answer": "che",
+    "hint": "che as subject relative pronoun"
+  }
+]

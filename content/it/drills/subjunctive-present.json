@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Voglio che tu ___ subito.",
+    "choices": ["vieni", "venga", "venire"],
+    "answer": "venga",
+    "hint": "subjunctive required after volere che; venire → venga"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "È importante che lui ___ la verità.",
+    "answer": "dica",
+    "hint": "subjunctive of dire (io form: dico → dic- + -a)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Credo che Maria ___ ragione.",
+    "choices": ["ha", "abbia", "aveva"],
+    "answer": "abbia",
+    "hint": "subjunctive required after credere che; avere → abbia"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Benché ___ stanca, continua a lavorare.",
+    "answer": "sia",
+    "hint": "benché always triggers subjunctive; essere → sia"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Prima che lui ___, dobbiamo parlare.",
+    "choices": ["parte", "parta", "partirà"],
+    "answer": "parta",
+    "hint": "prima che triggers subjunctive; partire → parta"
+  }
+]

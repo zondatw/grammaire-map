@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Domani ___ a trovare la nonna.",
+    "choices": ["andrò", "vado", "andavo"],
+    "answer": "andrò",
+    "hint": "andare is irregular: andr- + future endings"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "L'anno prossimo noi ___ in Italia.",
+    "answer": "andremo",
+    "hint": "andare, noi future: andr- + -emo"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Quanti anni ___ quella donna? Almeno quaranta.",
+    "choices": ["ha", "avrà", "aveva"],
+    "answer": "avrà",
+    "hint": "future tense for conjecture about the present"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Quando ___ grande, voglio fare il medico.",
+    "answer": "sarò",
+    "hint": "essere irregular future: sar- + -ò"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Loro ___ alla festa sabato sera?",
+    "choices": ["vengono", "verranno", "venivano"],
+    "answer": "verranno",
+    "hint": "venire is irregular: verr- + future endings"
+  }
+]

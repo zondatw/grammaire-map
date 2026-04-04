@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ madre è insegnante.",
+    "choices": ["La mia", "Mia", "Il mio"],
+    "answer": "Mia",
+    "hint": "singular unmodified family member — no article"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ho perso ___ chiavi.",
+    "answer": "le mie",
+    "hint": "chiavi is feminine plural (mia → mie)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I ___ amici vengono stasera.",
+    "choices": ["mio", "miei", "mia"],
+    "answer": "miei",
+    "hint": "masculine plural possessive"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Questa è ___ sorella minore.",
+    "answer": "mia",
+    "hint": "singular family member, no modifier — omit article"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ padre lavora in banca.",
+    "choices": ["Il loro", "Loro", "La loro"],
+    "answer": "Il loro",
+    "hint": "loro always takes the definite article, padre is masc. sing."
+  }
+]

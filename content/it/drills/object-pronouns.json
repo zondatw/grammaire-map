@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Hai visto Marco? Sì, ___ ho visto ieri.",
+    "choices": ["lo", "li", "gli"],
+    "answer": "lo",
+    "hint": "direct object pronoun for him (singular)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Telefono a Giulia ogni sera. ___ telefono sempre.",
+    "answer": "Le",
+    "hint": "indirect object pronoun for her"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Puoi darmi il libro? Certo, ___ do subito.",
+    "choices": ["te lo", "te la", "me lo"],
+    "answer": "te lo",
+    "hint": "combined: to you + it (masc.) — ti + lo = te lo"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Ho comprato le scarpe e ___ ho messe nella borsa.",
+    "answer": "le",
+    "hint": "direct object pronoun for them (feminine plural)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Voglio parlar___ di una cosa importante.",
+    "choices": ["gli", "le", "ti"],
+    "answer": "ti",
+    "hint": "indirect pronoun attached to infinitive (to you, singular)"
+  }
+]

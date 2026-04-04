@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ anni hai?",
+    "choices": ["Quanto", "Quanti", "Quale"],
+    "answer": "Quanti",
+    "hint": "anni is plural, so use quanti"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ è la stazione più vicina?",
+    "answer": "Dov'",
+    "hint": "dove drops -e before è"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ non sei venuto ieri?",
+    "choices": ["Come", "Quando", "Perché"],
+    "answer": "Perché",
+    "hint": "asking for a reason"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Con ___ esci stasera?",
+    "answer": "chi",
+    "hint": "who (person) after a preposition"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ costa questo vestito?",
+    "choices": ["Quanto", "Quanta", "Quale"],
+    "answer": "Quanto",
+    "hint": "how much (invariable with costare)"
+  }
+]

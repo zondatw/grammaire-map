@@ -32,7 +32,7 @@ export default function DrillPage({ allLanguages }: Props) {
   useEffect(() => {
     const paramLang = searchParams.get('lang') as Language | null
     const savedLang = getLanguage()
-    const activeLang: Language = (paramLang === 'fr' || paramLang === 'es') ? paramLang : savedLang
+    const activeLang: Language = (paramLang === 'fr' || paramLang === 'es' || paramLang === 'it') ? paramLang : savedLang
 
     if (activeLang !== savedLang) saveLanguage(activeLang)
     setLang(activeLang)

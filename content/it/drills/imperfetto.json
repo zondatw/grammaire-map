@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Da bambino ___ sempre la pizza.",
+    "choices": ["mangiavo", "ho mangiato", "mangio"],
+    "answer": "mangiavo",
+    "hint": "habitual past action uses imperfetto"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "___ le tre quando siamo arrivati.",
+    "answer": "Erano",
+    "hint": "telling time in the past uses imperfetto (essere)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Leggevo il giornale quando ___ il telefono.",
+    "choices": ["squillava", "squillò", "ha squillato"],
+    "answer": "ha squillato",
+    "hint": "completed interrupting event uses passato prossimo"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Quando ero giovane, ___ molto sport.",
+    "answer": "facevo",
+    "hint": "habitual past, fare → facevo"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "___ molto freddo e nevicava forte.",
+    "choices": ["Faceva", "Ha fatto", "Fa"],
+    "answer": "Faceva",
+    "hint": "weather description in the past uses imperfetto"
+  }
+]

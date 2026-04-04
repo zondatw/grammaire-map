@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ chiamo Giulia, piacere!",
+    "choices": ["Mi", "Ti", "Si"],
+    "answer": "Mi",
+    "hint": "reflexive pronoun for io (first person)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "A che ora ___ svegli la mattina?",
+    "answer": "ti",
+    "hint": "reflexive pronoun for tu"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "I bambini ___ divertono al parco.",
+    "choices": ["ci", "vi", "si"],
+    "answer": "si",
+    "hint": "reflexive pronoun for loro"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Voglio ___ prima di uscire.",
+    "answer": "vestirmi",
+    "hint": "attach reflexive pronoun to the infinitive"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Noi ___ alziamo sempre tardi il sabato.",
+    "choices": ["mi", "ci", "vi"],
+    "answer": "ci",
+    "hint": "reflexive pronoun for noi"
+  }
+]

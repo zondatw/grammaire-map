@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "___ problema è difficile da risolvere.",
+    "choices": ["Il", "La", "L'"],
+    "answer": "Il",
+    "hint": "problema is masculine despite ending in -a"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho bisogno di ___ informazione importante.",
+    "choices": ["un", "una", "uno"],
+    "answer": "una",
+    "hint": "informazione is feminine (-ione ending)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "La stazione è lontana. ___ città è grande.",
+    "answer": "La",
+    "hint": "città is feminine (-tà ending)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Mi fa male ___ mano destra.",
+    "choices": ["il", "la", "lo"],
+    "answer": "la",
+    "hint": "mano is feminine despite ending in -o"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "I ___ di questo giardino sono bellissimi.",
+    "answer": "fiori",
+    "hint": "plural of fiore (masculine -e noun)"
+  }
+]

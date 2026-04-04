@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Ieri Marco ___ partito alle sei di mattina.",
+    "choices": ["ha", "è", "sta"],
+    "answer": "è",
+    "hint": "partire is an intransitive motion verb — uses essere"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Loro ___ arrivati in ritardo alla riunione.",
+    "answer": "sono",
+    "hint": "arrivare uses essere"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Stamattina ho ___ due uova per colazione.",
+    "choices": ["mangiato", "mangiata", "mangiati"],
+    "answer": "mangiato",
+    "hint": "avere: participle does not agree with subject"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Sofia si è ___ alle sette.",
+    "answer": "alzata",
+    "hint": "reflexive verb + essere: participle agrees (f. sing.)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Le ragazze ___ uscite tardi ieri sera.",
+    "choices": ["hanno", "sono", "stanno"],
+    "answer": "sono",
+    "hint": "uscire uses essere; participle is uscite (f. pl.)"
+  }
+]

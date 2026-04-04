@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Ho molte ___ al lavoro.",
+    "choices": ["amiche", "amici", "amice"],
+    "answer": "amiche",
+    "hint": "feminine -ca nouns take -che in plural"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Mi fanno male le ___.",
+    "answer": "braccia",
+    "hint": "il braccio → le braccia (changes gender)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "In questa città ci sono molti ___.",
+    "choices": ["laghi", "lagi", "laghe"],
+    "answer": "laghi",
+    "hint": "-go → -ghi (preserves hard sound)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "I miei ___ abitano a Roma.",
+    "answer": "zii",
+    "hint": "zio → zii (stressed -io takes -ii)"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Quante ___ vuoi nel caffè?",
+    "choices": ["zucchero", "zuccheri", "cucchiai"],
+    "answer": "zuccheri",
+    "hint": "-o → -i for masculine nouns (regular)"
+  }
+]

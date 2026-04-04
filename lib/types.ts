@@ -33,7 +33,7 @@ export type MasteryLevel = 0 | 1 | 2
 
 export type MasteryState = Record<string, MasteryLevel>
 
-export type Language = 'fr' | 'es'
+export type Language = 'fr' | 'es' | 'it'
 
 export interface LanguageData {
   orderedIds: string[]
@@ -45,4 +45,5 @@ export interface LanguageData {
 export const SUPPORTED_LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'fr', label: 'French', flag: '🇫🇷' },
   { code: 'es', label: 'Spanish', flag: '🇪🇸' },
+  { code: 'it', label: 'Italian', flag: '🇮🇹' },
 ]

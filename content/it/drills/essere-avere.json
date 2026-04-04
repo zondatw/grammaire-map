@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Io ___ molto stanco dopo il lavoro.",
+    "choices": ["sono", "ho", "sei"],
+    "answer": "sono",
+    "hint": "essere for states/conditions (io form)"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Loro ___ due figli e una figlia.",
+    "answer": "hanno",
+    "hint": "avere, loro form"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Tu ___ freddo? Vuoi un maglione?",
+    "choices": ["sei", "hai", "stai"],
+    "answer": "hai",
+    "hint": "avere freddo = to be cold in Italian"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Noi ___ italiani e parliamo italiano.",
+    "answer": "siamo",
+    "hint": "essere, noi form"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Lei ___ una bella voce.",
+    "choices": ["è", "ha", "sta"],
+    "answer": "ha",
+    "hint": "avere for possession (lei form)"
+  }
+]

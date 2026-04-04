@@ -1,0 +1,35 @@
+[
+  {
+    "type": "multiple-choice",
+    "prompt": "Loro ___ molto velocemente.",
+    "choices": ["parlano", "parlate", "parlamo"],
+    "answer": "parlano",
+    "hint": "-are verb, loro form ends in -ano"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Io non ___ bene il francese.",
+    "answer": "capisco",
+    "hint": "capire uses the -isc- pattern, io form"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Tu ___ una lettera a tua nonna?",
+    "choices": ["scrivi", "scrive", "scrivete"],
+    "answer": "scrivi",
+    "hint": "-ere verb, tu form"
+  },
+  {
+    "type": "fill-in",
+    "prompt": "Noi ___ alle undici di sera.",
+    "answer": "dormiamo",
+    "hint": "dormire standard -ire pattern, noi form"
+  },
+  {
+    "type": "multiple-choice",
+    "prompt": "Lei ___ sempre il caffè al mattino.",
+    "choices": ["preferisce", "preferisce", "prefere"],
+    "answer": "preferisce",
+    "hint": "preferire uses -isc- pattern, lei form"
+  }
+]
