@@ -1,7 +1,0 @@
-node_modules/
-out/
-scripts/
-.next/
-.gstack/
-*.txt
-next-env.d.ts
